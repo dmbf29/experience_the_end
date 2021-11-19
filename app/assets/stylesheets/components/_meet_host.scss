@@ -3,35 +3,12 @@
     align-items: center;
     margin-bottom: 8px;
     padding: 8px 16px;
-  }
-  
-  .host-name-container .host-name {
-    // flex-grow: 1;
+    }
+
+    .host-name-container .host-name {
     padding: 0 24px;
-  }
+    }
 
-  .host-container {
+    .host-container {
     background: white;
-  }
-  
-  .btn-ghost {
-    border: 1px solid;
-    padding: 8px 24px;
-    border-radius: 10px;
-    font-weight: lighter;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-    margin-right: 10px;
-  }
-  
-  .btn-ghost:hover {
-    opacity: 1;
-  }
-
-  .fa-star {
-      color: red,
-  }
-
-  .fa-shield-alt {
-      color:red,
-  }
+    }
