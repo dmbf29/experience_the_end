@@ -9,7 +9,7 @@ export default class extends Controller {
 
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/dark-v10",
+      style: "mapbox://styles/mapbox/outdoors-v10",
     });
 
     const markers = JSON.parse(this.element.dataset.markers);
@@ -22,7 +22,7 @@ export default class extends Controller {
 
     markers.forEach((marker) => {
       // Create info popup
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+      const popup = new mapboxgl.Popup().setHTML(marker.popup_html);
 
       // Create HTML element for custom marker
       const element = document.createElement("div");
@@ -45,5 +45,10 @@ export default class extends Controller {
         mapboxgl: mapboxgl,
       })
     );
+
+    // Prevent map from loading at 300px height
+    map.on("load", function () {
+      map.resize();
+    });
   }
 }

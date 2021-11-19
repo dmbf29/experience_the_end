@@ -6,7 +6,7 @@ class ExperiencesController < ApplicationController
       {
         lat: experience.latitude,
         lng: experience.longitude,
-        popup: render_to_string(partial: "map_popup", locals: { experience: experience }),
+        popup_html: render_to_string(partial: "map_popup", locals: { experience: experience }),
         marker_html: render_to_string(partial: "map_marker", locals: { experience: experience })
       }
     end
