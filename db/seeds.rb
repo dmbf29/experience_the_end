@@ -106,7 +106,7 @@ User.find_each do |user|
     start_time: DateTime.now + rand(5..15).days
   )
   booking.end_time = booking.start_time + rand(1..3).hours
-  bookings.save!
+  booking.save!
 
   booking = Booking.new(
     user: user,
