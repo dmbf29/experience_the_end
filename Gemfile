@@ -33,9 +33,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'autoprefixer-rails', '10.2.5'
 gem 'cloudinary', '~> 1.16.0'
 gem 'devise'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'font-awesome-sass'
 gem 'simple_form'
-
 
 group :development, :test do
   gem 'pry-byebug'
