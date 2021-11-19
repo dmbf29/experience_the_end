@@ -1,1 +1,23 @@
 <%# Photo gallery component for the show page %>
+<% photo_count = 0 %>
+<% photos = @experience.photos %>
+<div class="row">
+  <div class="column">
+    <% 2.times do %>
+      <%= cl_image_tag photos[photo_count].key unless photos[photo_count].nil? %>
+      <% photo_count += 1 %>
+    <% end %>
+  </div>
+  <div class="column">
+    <% 2.times do %>
+      <%= cl_image_tag photos[photo_count].key unless photos[photo_count].nil? %>
+      <% photo_count += 1 %>
+    <% end %>
+  </div>
+  <div class="column">
+    <% 2.times do %>
+      <%= cl_image_tag photos[photo_count].key unless photos[photo_count].nil? %>
+      <% photo_count += 1 %>
+    <% end %>
+  </div>
+</div>
