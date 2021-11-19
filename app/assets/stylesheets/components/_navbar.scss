@@ -1,6 +1,9 @@
+@import '../config/layout';
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  height: $navbar-height;
 }
 
 .navbar-lewagon .navbar-collapse {
