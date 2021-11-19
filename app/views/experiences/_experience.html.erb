@@ -3,7 +3,7 @@
   <%= cl_image_tag experience.photos.first&.key %>
   <div class="card-experience-infos w-100">
     <div>
-      <h2><%= experience.name %></h2>
+      <h2><%= link_to experience.name, experience_path(experience)  %></h2>
       <div class="divider-mini"></div>
       <p><strong>What We'll do:</strong></p>
       <p><%= experience.description %></p>

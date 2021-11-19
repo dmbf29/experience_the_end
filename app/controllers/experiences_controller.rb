@@ -5,7 +5,8 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    @expeience = Experience.find(params[:id])
+    @experience = Experience.find(params[:id])
+    authorize @experience
   end
 
   def new
