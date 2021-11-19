@@ -116,4 +116,4 @@ User.find_each do |user|
   booking.end_time = booking.start_time + rand(1..3).hours
   booking.save!
 end
-puts "Created #{Bookings.count} bookings..."
+puts "Created #{Booking.count} bookings..."
