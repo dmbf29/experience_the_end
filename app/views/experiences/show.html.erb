@@ -1,2 +1,25 @@
-<h1>Experiences#show</h1>
-<p>Find me in app/views/experiences/show.html.erb</p>
+<%# Style reference %>
+<%# https://www.airbnb.com/experiences/107865?checkin=2021-11-22&checkout=2021-11-25&currentTab=experience_tab&federatedSearchId=f6a3c735-1b4e-4cf4-bbb5-5ed576a0ece0&searchId=&sectionId=7b7a8f11-39d9-4849-b4bf-f9e00dc83324&source=p2 %>
+<div class="container">
+  <div class="row">
+    <h2>Laying on a train track</h2>
+    <%= render 'photo_gallery' %>
+  </div>
+  <div class="row">
+    <div class="col col-md-8">
+      <h3>Experience hosted by Takashi</h3>
+      <%# More stuff %>
+      <%= render 'meet_your_host' %>
+    </div>
+    <div class="col col-md-4">
+      <%= render 'bookings/form' %>
+    </div>
+  </div>
+  <div class="row">
+    <%# Map %>
+    <%#= render @experience.reviews %>
+  </div>
+  <div class="row">
+    <%# Similar experiences %>
+  </div>
+</div>
