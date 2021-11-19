@@ -40,18 +40,47 @@ end
 
 members = [doug, trouni, sasha, yann, derek, noemi]
 
-puts "Cleaning all other users..."
-Users.where.not(id: members).destroy_all
+# puts "Cleaning all other users..."
+# Users.where.not(id: members).destroy_all
 
-30.times do
-  file = URI.open('https://thispersondoesnotexist.com/image')
-  user = Upload.create!(
-    email: Faker::Internet.safe_email,
-    password: '123123',
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
-  )
-  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+puts "Only creating Users if they don't exist. (Photos take time...)"
+if User.count < 30
+  puts "Yep you needed Users"
+  30.times do
+    file = URI.open('https://thispersondoesnotexist.com/image')
+    user = Upload.create!(
+      email: Faker::Internet.safe_email,
+      password: '123123',
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name
+    )
+    user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  end
+  puts "...Created #{User.count} users"
 end
 
-puts "...Created #{User.count} users"
+
+puts "Creating experiences..."
+experiences = {
+  'Russian Roulette' => ""
+  'Lying on Train Tracks' => ""
+  'Cliff Jumping' => ""
+  'Blindfold Driving' => ""
+  'Jetskiing with Sharks' => ""
+  'Swimming with Alligators' => ""
+  'Hippo Rodeo' => ""
+  'Mountain Biking Everest' => ""
+  'Helicopter Obstacle Course' => ""
+  'Highway Car Jumping' => ""
+}
+prices = [500, 1000, 1500, 2000, 2500, 3000]
+
+experiences.each do |name, info|
+  Experience.create!(
+    name: name,
+    description: Faker::Lorem.paragraph,
+    price: prices.sample
+    address: Faker::Address.street_address
+    user: User.all.sample
+  )
+end
