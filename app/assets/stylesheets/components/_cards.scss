@@ -4,6 +4,7 @@
   background: white;
   display: flex;
   align-items: center;
+  position: relative;
   img {
     height: 100%;
     width: 140px;
@@ -26,5 +27,12 @@
     justify-content: space-between;
     height: 100%;
     padding: $spacer / 2;
+  }
+  .card-experience-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 }
