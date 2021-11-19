@@ -10,8 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
-    <%= render 'navbar' %>
     <%= render 'flashes' %>
-    <%= yield %>
+    <div class="d-flex flex-column vh-100">
+      <%= render 'navbar' %>
+      <div class="flex-grow-1 overflow-scroll">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
