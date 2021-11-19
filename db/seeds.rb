@@ -62,7 +62,7 @@ end
 puts "Cleaning up experiences and bookings..."
 Booking.destroy_all
 Experience.destroy_all
-puts "Detroyed experiences..."
+puts "...done"
 
 puts "Creating experiences..."
 experiences = {
@@ -90,7 +90,7 @@ experiences.each do |name, info|
     user: User.all.sample
   )
   file = URI.open(info[:image_url])
-  experience.photo.attach(io: file, filename: 'experience.png', content_type: 'image/png')
+  experience.photos.attach(io: file, filename: 'experience.png', content_type: 'image/png')
 end
 puts "Created #{Experience.count} experiences..."
 
@@ -114,6 +114,6 @@ User.find_each do |user|
     start_time: DateTime.now + rand(5..15).days
   )
   booking.end_time = booking.start_time + rand(1..3).hours
-  bookings.save!
+  booking.save!
 end
 puts "Created #{Bookings.count} bookings..."
