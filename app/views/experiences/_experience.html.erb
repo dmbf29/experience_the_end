@@ -1,1 +1,23 @@
 <%# Experience card for the index %>
+<div class="card-experience">
+  <%= cl_image_tag experience.photos.first&.key %>
+  <div class="card-experience-infos w-100">
+    <div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class='fw-light'><%= experience.name %></h2>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="divider-mini"></div>
+      <p><strong>What We'll do:</strong></p>
+      <p><%= experience.description %></p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <i class="fas fa-star text-teal"></i><small><strong>4.98 </strong>(12)</small>
+      </div>
+      <div>
+        <strong>From ¥<%= number_with_delimiter(experience.price, delimiter: ",") %></strong> / hour
+      </div>
+    </div>
+  </div>
+</div>
