@@ -1,5 +1,8 @@
 .search-form-control {
-  position: relative;
+  position: absolute;
+  top: 16px;
+  width: var(--skull-size);
+  z-index: 99999;
 }
 
 .search-form-control .btn {
