@@ -1,7 +1,9 @@
 <div class="map-popup shadow">
   <div class="photo-grid grid-<%= pluralize(experience.photos.first(3).length, 'photo').split(' ').join('-') %>">
     <% experience.photos.first(3).each do |photo| %>
-      <%= cl_image_tag photo.key, alttext: experience.name %>
+      <div class="photo">
+        <%= cl_image_tag photo.key, alttext: experience.name, width: 330, height: 330, crop: :fill, gravity: :faces %>
+      </div>
     <% end %>
   </div>
   <div class="p-3">

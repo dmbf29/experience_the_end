@@ -9,7 +9,8 @@ export default class extends Controller {
 
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/outdoors-v10",
+      style: "mapbox://styles/trouni/ckw61fw2j9nl814pa0gqlgbsh",
+      zoom: 0,
     });
 
     const markers = JSON.parse(this.element.dataset.markers);
@@ -34,10 +35,6 @@ export default class extends Controller {
         .addTo(map);
     });
 
-    if (markers.length) {
-      fitMapToMarkers(map, markers);
-    }
-
     // Add search input field
     map.addControl(
       new MapboxGeocoder({
@@ -49,6 +46,9 @@ export default class extends Controller {
     // Prevent map from loading at 300px height
     map.on("load", function () {
       map.resize();
+      if (markers.length) {
+        fitMapToMarkers(map, markers);
+      }
     });
   }
 }
