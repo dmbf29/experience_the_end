@@ -1,4 +1,4 @@
-# 📚 Experience the End
+# ☠️ Experience the End
 
 An Adventure app to book near death experiences.
 
