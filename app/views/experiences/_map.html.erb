@@ -1,3 +1,8 @@
 <%# Map component for the index %>
-<%# TODO: Replace with actual map %>
-<%= image_tag 'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg', style: 'height: 100%; width: 100%; object-fit: cover;' %>
+<div
+  id="map"
+  data-controller="mapbox"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  style="position: 'absolute'; top: 0; bottom: 0; height: 100%; width: 100%;">
+</div>
