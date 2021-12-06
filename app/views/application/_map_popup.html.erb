@@ -1,0 +1,15 @@
+<div class="map-popup shadow">
+  <div class="photo-grid grid-<%= pluralize(experience.photos.first(3).length, 'photo').split(' ').join('-') %>">
+    <% experience.photos.first(3).each do |photo| %>
+      <div class="photo">
+        <%= cl_image_tag photo.key, alttext: experience.name, width: 330, height: 330, crop: :fill, gravity: :faces %>
+      </div>
+    <% end %>
+  </div>
+  <div class="p-3">
+    <%# TODO: make rating dynamic %>
+    <p><i class="fas fa-star text-primary"></i> <span class="fw-bold">4.67</span> (722)</p>
+    <p><%= experience.name %></p>
+    <p class="mb-0"><span class="fw-bold">From <%= number_to_currency(experience.price, {unit: '¥', precision: 0}) %></span> / hour</p>
+  </div>
+</div>
