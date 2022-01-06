@@ -11,3 +11,13 @@
 .btn-ghost:hover {
   opacity: 1;
 }
+
+.btn-teal {
+  background-color: teal;
+  padding: 8px 24px;
+  border-radius: 10px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+  margin-right: 10px;
+  color: white;
+}
