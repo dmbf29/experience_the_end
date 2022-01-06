@@ -5,7 +5,8 @@
 
   <%= simple_form_for @booking do |f| %>
    <%= f.input :start_time, as: :string, label: false, placeholder: "Choose your date...", input_html: {class: "datepicker"} %>
-   <div class="row mt-3 ">
+   
+   <div class="row mt-3 today-date">
       <div class="col-6">
         <small><strong></em><%= Date.today.to_s(:long) %></strong></small><br>
         <small class="text-muted">1PM - 3PM</small>
@@ -18,7 +19,7 @@
 
     <div class="row mt-3">
       <div class="col-6">
-        <small><strong></em><%= Date.tomorrow.to_s(:long) %></strong></small><br>
+        <small class="template-date"><strong></em><%= Date.tomorrow.to_s(:long) %></strong></small><br>
         <small class="text-muted">1PM - 3PM</small>
        </div>
       <div class="col-6">
