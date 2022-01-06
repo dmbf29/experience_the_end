@@ -1,2 +1,8 @@
-<%# Booking form for the experiences#show %>
-Booking form
+<div class="booking-card">
+  <h4>From ¥<%= @experience.price %>/ person</h4>
+  <%= simple_form_for @booking do |f| %>
+    <%= f.input :date, as: :date, html5: true %>
+    <%= f.button :submit %>
+  <% end %>
+  
+</div>
