@@ -13,8 +13,9 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    @experience = Experience.find(params[:id])
-    authorize @experience
+      @experience = Experience.find(params[:id])
+      @booking = Booking.new
+      authorize @experience
   end
 
   def new

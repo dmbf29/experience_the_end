@@ -1,8 +1,10 @@
 <div class="booking-card">
   <h4>From ¥<%= @experience.price %>/ person</h4>
+  <small class="text-muted"><u>Show all prices</u></small>
+
   <%= simple_form_for @booking do |f| %>
-    <%= f.input :date, as: :date, html5: true %>
-    <%= f.button :submit %>
+   <%= f.input :start_time, as: :string, label: false, placeholder: "Choose your date...", input_html: {class: "datepicker"} %>
+   <%= f.button :submit, class: "btn-ghost" %>  
   <% end %>
   
 </div>
