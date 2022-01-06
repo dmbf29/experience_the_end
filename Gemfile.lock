@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 8c416c69338ebcb2973ac5be7caa707d700a8128
+  branch: master
+  specs:
+    faker (2.19.0)
+      i18n (>= 1.8.11, < 2)
 
 GEM
   remote: https://rubygems.org/
@@ -138,6 +145,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
     options (2.3.2)
     orm_adapter (0.5.0)
     pg (1.2.3)
@@ -267,6 +276,7 @@ GEM
     zeitwerk (2.5.3)
 
 PLATFORMS
+  x86_64-darwin-18
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-linux
