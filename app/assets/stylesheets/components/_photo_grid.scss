@@ -2,11 +2,13 @@
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  :first-child {
+  a:first-child {
     border-radius: 10px 0 0 10px;
+    overflow: hidden;
   }
-  :last-child {
+  a:last-child {
     border-radius: 0 10px 10px 0;
+    overflow: hidden;
   }
   .photo-grid-item {
     width: 100%;
