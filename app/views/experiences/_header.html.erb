@@ -1,9 +1,9 @@
 <%# TODO: Replace this with real categories when tagged %>
 <div class="row">
   <div class="d-flex align-items-center fw-lighter my-4">
-    <small class="me-2">Tokyo, Japan</small>
+    <small class="me-2"><%= link_to "Tokyo, Japan", experiences_path(address: @experience.address), class: 'text-dark' %></small>
     <small class="me-2"> > </small>
-    <small class="me-2">Sports</small>
+    <small class="me-2"><%= link_to "Sports", experiences_path(category: ''), class: 'text-dark' %></small>
   </div>
 </div>
 <div class="row">
