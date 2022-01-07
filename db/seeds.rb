@@ -84,7 +84,7 @@ prices = [500, 1000, 1500, 2000, 2500, 3000]
 bar = ProgressBar.new(experiences.length)
 experiences.each do |name, info|
   start_hour = rand(8..20)
-  start_time = Time.new(Time.now.year, nil, nil, start_hour, nil, nil,nil)
+  start_time = Time.new(Time.now.year, nil, nil, start_hour, nil, nil, "+09:00")
   end_time = start_time + [60, 90, 120, 150, 180, 210, 240].sample.minutes
   experience = Experience.create!(
     name: name,

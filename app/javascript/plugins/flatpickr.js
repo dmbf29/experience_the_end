@@ -7,8 +7,9 @@ const initFlatpickr = () => {
       const templateDate = document.querySelector(".template-date");
       const todayDate = document.querySelector(".today-date");
       todayDate.style.display = "none";
-      templateDate.innerHTML = dateStr;
-
+      const date = new Date(dateStr);
+      const formattedDate = date.toDateString().split(' ').slice(1).join(' ')
+      templateDate.innerHTML = formattedDate;
     },
   });
 }
