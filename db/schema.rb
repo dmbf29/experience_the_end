@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(version: 2022_01_07_055133) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "experience_id", null: false
-    t.datetime "start_time"
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.integer "participants"
     t.index ["experience_id"], name: "index_bookings_on_experience_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -64,7 +65,8 @@ ActiveRecord::Schema.define(version: 2022_01_07_055133) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-    t.float "hours"
+    t.time "start_time"
+    t.time "end_time"
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
