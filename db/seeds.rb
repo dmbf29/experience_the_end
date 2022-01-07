@@ -90,7 +90,8 @@ experiences.each do |name, info|
     address: Faker::Address.street_address,
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
-    user: User.all.sample
+    user: User.all.sample,
+    hours: Experience::HOURS.sample
   )
   info[:image_urls].each do |image_url|
     file = URI.open(image_url)
@@ -112,7 +113,6 @@ User.find_each do |user|
     experience: Experience.all.sample,
     start_time: DateTime.now + rand(5..15).days
   )
-  booking.end_time = booking.start_time + rand(1..3).hours
   booking.save!
 
   booking = Booking.new(
@@ -120,7 +120,6 @@ User.find_each do |user|
     experience: Experience.all.sample,
     start_time: DateTime.now + rand(5..15).days
   )
-  booking.end_time = booking.start_time + rand(1..3).hours
   booking.save!
   bar.increment!
 end
