@@ -1,1 +1,6 @@
 <%# Photo gallery component for the show page %>
+<div class="photo-grid mb-4">
+  <% @experience.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, class: 'w-100' %>
+  <% end %>
+</div>
