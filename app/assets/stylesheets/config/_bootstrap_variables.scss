@@ -23,3 +23,10 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$btn-border-radius: 10px;
+$btn-font-weight: lighter;
+
+// I can't find a way to override $btn-color....
+.btn-primary {
+  color: white !important;
+}
