@@ -19,5 +19,7 @@ class ExperiencesController < ApplicationController
   end
 
   def new
+    @experience = Experience.new
+    authorize @experience
   end
 end
