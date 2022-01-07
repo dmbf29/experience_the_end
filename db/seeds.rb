@@ -83,6 +83,9 @@ prices = [500, 1000, 1500, 2000, 2500, 3000]
 
 bar = ProgressBar.new(experiences.length)
 experiences.each do |name, info|
+  start_hour = rand(8..20)
+  start_time = Time.new(Time.now.year, nil, nil, start_hour, nil, nil,nil)
+  end_time = start_time + [60, 90, 120, 150, 180, 210, 240].sample.minutes
   experience = Experience.create!(
     name: name,
     description: Faker::Lorem.paragraph,
@@ -91,7 +94,8 @@ experiences.each do |name, info|
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     user: User.all.sample,
-    hours: Experience::HOURS.sample
+    start_time: start_time
+    end_time: end_time
   )
   info[:image_urls].each do |image_url|
     file = URI.open(image_url)
@@ -118,7 +122,8 @@ User.find_each do |user|
   booking = Booking.new(
     user: user,
     experience: Experience.all.sample,
-    start_time: DateTime.now + rand(5..15).days
+    date: Date.today + rand(5..20),
+    participants: rand(1..3)
   )
   booking.save!
   bar.increment!
