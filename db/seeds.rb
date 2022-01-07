@@ -113,7 +113,8 @@ User.find_each do |user|
     booking = Booking.new(
       user: user,
       experience: experience,
-      date: Date.today + rand(5..20)
+      date: Date.today + rand(5..20),
+      participants: rand(1..3)
     )
   booking.save!
   end
