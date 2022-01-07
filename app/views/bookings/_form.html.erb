@@ -1,5 +1,5 @@
 <div class="booking-card">
-  <h4>From ¥<%= @experience.price %>/ person</h4>
+  <h4>From ¥<%= number_with_delimiter(@experience.price) %>/ person</h4>
   <small class="text-muted"><u>Show all prices</u></small>
   <%= simple_form_for @booking do |f| %>
     <%= f.input :start_time, as: :string, label: false, placeholder: "Choose your date...", input_html: {class: "datepicker"} %>

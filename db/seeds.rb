@@ -94,7 +94,7 @@ experiences.each do |name, info|
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     user: User.all.sample,
-    start_time: start_time
+    start_time: start_time,
     end_time: end_time
   )
   info[:image_urls].each do |image_url|
