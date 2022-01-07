@@ -4,7 +4,7 @@ class Experience < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :start_time, presence: true
-  validates :end_time, presence: true\
+  validates :end_time, presence: true
   validates :photos, limit: { min: 2, max: 4 }
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
