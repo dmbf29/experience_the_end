@@ -110,22 +110,13 @@ bar = ProgressBar.new(User.count * 2)
 User.find_each do |user|
   experiences = Experience.all.sample(2)
   experiences.each do |experience|
-
+    booking = Booking.new(
+      user: user,
+      experience: experience,
+      date: Date + rand(5..20)
+    )
+  booking.save!
   end
-  booking = Booking.new(
-    user: user,
-    experience: Experience.all.sample,
-    start_time: DateTime.now + rand(5..15).days
-  )
-  booking.save!
-
-  booking = Booking.new(
-    user: user,
-    experience: Experience.all.sample,
-    date: Date.today + rand(5..20),
-    participants: rand(1..3)
-  )
-  booking.save!
   bar.increment!
 end
 puts "Created #{Booking.count} bookings..."
