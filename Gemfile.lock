@@ -116,6 +116,7 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     highline (2.0.3)
+    htmlbeautifier (1.4.1)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -277,6 +278,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -290,6 +292,7 @@ DEPENDENCIES
   faker!
   font-awesome-sass
   geocoder
+  htmlbeautifier
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
@@ -315,4 +318,4 @@ RUBY VERSION
    ruby 2.7.4p191
 
 BUNDLED WITH
-   2.2.31
+   2.2.32
