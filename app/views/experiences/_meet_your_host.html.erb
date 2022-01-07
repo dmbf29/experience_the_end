@@ -1,21 +1,20 @@
 <div class="host-container p-3">
   <div class="host-name-container">
-    <%= cl_image_tag @experience.user.photo.key, class: "avatar-large" %> 
+    <%= cl_image_tag @experience.user.photo.key, class: "avatar-large" %>
     <div class="host-name">
-        <h5>Meet your host, <%= @experience.user.first_name %></h5>
-        <small>Host on Experiences since <%= @experience.user.created_at.year %></small>
+      <h5>Meet your host, <%= @experience.user.first_name %></h5>
+      <small>Host on Experiences since <%= @experience.user.created_at.year %></small>
     </div>
   </div>
   <div class="host-reviews d-flex">
-      <p class="mr-3"><i class="fas fa-star text-teal"></i> 111 reviews</p>
-      <p><i class="fas fa-shield-alt text-teal"></i> Identity verified</p>
+    <p class="mr-3"><i class="fas fa-star text-primary"></i> 111 reviews</p>
+    <p><i class="fas fa-shield-alt text-primary"></i> Identity verified</p>
   </div>
   <div class="host-description">
-   <p>I am a teacher and performer who uses Japanese swords to express the heart of ancient Japanese tradition, something that cannot be found in museums or TV and web. My Passion is spreading the real spirits of samurai to the world. I have practiced swordsmanship for 14 years. I have a master grade 5th dan and black belt in sword martial arts “Tou-dou”. I also play Japanese style bamboo flute, sometimes with my partner. I have taught and shown sword skills to over 2,000 people from all over the worl…</p>
+    <p>I am a teacher and performer who uses Japanese swords to express the heart of ancient Japanese tradition, something that cannot be found in museums or TV and web. My Passion is spreading the real spirits of samurai to the world. I have practiced swordsmanship for 14 years. I have a master grade 5th dan and black belt in sword martial arts “Tou-dou”. I also play Japanese style bamboo flute, sometimes with my partner. I have taught and shown sword skills to over 2,000 people from all over the worl…</p>
   </div>
   <div class="host-contacts">
     <a class="btn btn-ghost" href="#">Contact host</a>
     <small><i class="fas fa-shield-virus"></i> To protect your payment, never transfer money to us</small>
   </div>
-  
 </div>
