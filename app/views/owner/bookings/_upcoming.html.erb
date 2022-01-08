@@ -1,0 +1,18 @@
+<div class="mt-4">
+  <h2>Today</h2>
+  <% if bookings.today.any? %>
+    <p><%= pluralize(bookings.today.size, 'booking') %> today</p>
+    <%= render partial: bookings.today %>
+  <% else %>
+    <p>You have no bookings today.</p>
+  <% end %>
+</div>
+<div class="mt-4">
+  <h2>Upcoming bookings</h2>
+  <% if bookings.upcoming.any? %>
+    <p><%= pluralize(bookings.today.size, 'confirmed booking') %></p>
+    <%= render partial: bookings.upcoming %>
+  <% else %>
+    <p>You have no upcoming bookings.</p>
+  <% end %>
+</div>

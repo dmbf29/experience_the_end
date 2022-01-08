@@ -1,0 +1,44 @@
+<%= content_for :nav do %>
+  <ul class="nav" role="tablist">
+    <li>
+      <button class="btn active" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">
+        Upcoming
+      </button>
+    </li>
+    <li>
+      <button class="btn d-flex align-items-center" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">
+        Pending
+        <% if @bookings.need_response.any? %>
+          <span class="ms-1 badge rounded-pill bg-dark"><%= @bookings.need_response.size %></span>
+        <% end %>
+      </button>
+    </li>
+    <li>
+      <button class="btn" id="history-tab" data-bs-toggle="pill" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">
+        History
+      </button>
+    </li>
+  </ul>
+<% end %>
+<div class="container my-4">
+  <div class="row">
+    <div class="col col-md-8 px-4">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+          <%= render 'upcoming', bookings: @bookings.accepted %>
+        </div>
+        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <%= render 'pending', bookings: @bookings.need_response %>
+        </div>
+        <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+          <%= render 'past', bookings: @bookings.past %>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="sticky-top">
+        <%= render 'owner_summary' %>
+      </div>
+    </div>
+  </div>
+</div>
