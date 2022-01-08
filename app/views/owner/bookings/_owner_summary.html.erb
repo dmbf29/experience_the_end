@@ -8,7 +8,15 @@
     <hr class="mb-0">
     <div class="d-flex justify-content-between align-items-center">
       <h6 class="m-0"><%= Date::MONTHNAMES[Date.today.month] %> earnings</h6>
-      <p class="m-0 text-primary"><%= currency(25000) %></p>
+      <p class="m-0 text-primary"><%= currency(current_user.owner_monthly_earnings[Date.today.beginning_of_month]) || '-' %></p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h6 class="m-0">Last month's earnings</h6>
+      <p class="m-0 text-primary"><%= currency(current_user.owner_monthly_earnings[(Date.today - 1.month).beginning_of_month]) || '-' %></p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h6 class="m-0">Total earnings</h6>
+      <p class="m-0 text-primary"><%= currency(current_user.owner_total_earnings) %></p>
     </div>
     <hr class="mb-0">
     <% if current_user.reviews_as_owner.any? %>

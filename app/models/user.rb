@@ -21,7 +21,11 @@ class User < ApplicationRecord
     ((1 - bookings_as_owner.expired.count.to_f / bookings_as_owner.count) * 100).round
   end
 
-  def owner_earnings
-    bookings_as_owner.sum('experiences.price * participants')
+  def owner_total_earnings
+    bookings_as_owner.completed.sum('experiences.price * participants')
+  end
+
+  def owner_monthly_earnings
+    bookings_as_owner.completed.group_by_month(:date).sum('experiences.price * participants')
   end
 end
