@@ -30,7 +30,7 @@
               <hr>
               <li><%= link_to "Guide an experience", new_experience_path, class: "dropdown-item" %></li>
               <% if current_user.owner? %>
-                <li><%= link_to "Manage experiences", owner_experiences_path, class: "dropdown-item" %></li>
+                <li><%= link_to "Manage experiences", nil, class: "dropdown-item" %></li>
                 <li>
                   <%= link_to owner_bookings_path, class: "dropdown-item d-flex align-items-center" do %>
                     Manage reservations

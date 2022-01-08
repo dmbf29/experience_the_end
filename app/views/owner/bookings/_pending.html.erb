@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-5">
   <h2>Pending requests</h2>
   <% if bookings.any? %>
     <p><%= pluralize(bookings.size, 'pending request') %> · <%= current_user.owner_response_rate %>% response rate</p>
