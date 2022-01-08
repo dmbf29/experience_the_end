@@ -10,6 +10,7 @@
   .dropdown-menu {
     min-width: 16rem;
     border-radius: $default-radius;
+    background-color: rgba(white, 0.95);
   }
   .dropdown-item {
     font-size: 0.9rem;
@@ -42,6 +43,21 @@
           box-shadow: none;
         }
       }
+    }
+  }
+}
+
+.navbar.transparent {
+  background-color: transparent !important;
+  position: absolute;
+  width: 100%;
+}
+
+.navbar.dark {
+  &, li, a, i {
+    color: white !important;
+    .dropdown-menu {
+      background-color: rgba($secondary, 0.95);
     }
   }
 }
