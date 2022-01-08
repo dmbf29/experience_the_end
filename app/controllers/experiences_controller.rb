@@ -25,6 +25,7 @@ class ExperiencesController < ApplicationController
     @experience.save
     authorize @experience
     redirect_to new_experience_build_path(@experience)
+  
   end
 
   private
