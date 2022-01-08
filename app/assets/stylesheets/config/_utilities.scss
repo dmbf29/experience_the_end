@@ -1,0 +1,7 @@
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.vh-100-minus-nav {
+  height: calc(100vh - #{$navbar-height});
+}
