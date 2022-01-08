@@ -22,7 +22,6 @@ class ExperiencesController < ApplicationController
   def new
     @experience = Experience.new
     @experience.user = current_user
-    @experience.status = "building"
     @experience.save
     authorize @experience
     redirect_to new_experience_build_path(@experience)
