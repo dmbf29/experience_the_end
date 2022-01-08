@@ -10,6 +10,16 @@ const initFlatpickr = () => {
       const date = new Date(dateStr);
       const formattedDate = date.toDateString().split(' ').slice(1).join(' ')
       templateDate.innerHTML = formattedDate;
+
+      // Needs to fill in the picker on the modal as well
+      const pickerInputs = document.querySelectorAll(".flatpickr-input");
+      pickerInputs.forEach((picker) => {
+        picker.value = dateStr
+      })
+      const pickerTexts = document.querySelectorAll(".datepicker");
+      pickerTexts.forEach((picker) => {
+        picker.value = formattedDate
+      })
     },
   });
 }

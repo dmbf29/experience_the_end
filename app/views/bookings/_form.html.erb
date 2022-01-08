@@ -1,7 +1,7 @@
 <div class="booking-card">
   <h4>From ¥<%= number_with_delimiter(@experience.price) %>/ person</h4>
   <small class="text-muted"><u>Show all prices</u></small>
-  <%= simple_form_for @booking do |f| %>
+  <%= simple_form_for [@experience, @booking] do |f| %>
     <%= f.input :date, as: :string, label: false, placeholder: "Choose your date...", input_html: {class: "datepicker"} %>
     <div class="row mt-3 today-date">
       <div class="col-6">
@@ -9,7 +9,9 @@
         <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
       </div>
       <div class="col-6">
-        <%= f.button :submit, "Book experience", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
+          Choose
+        </button>
       </div>
     </div>
     <hr>
@@ -19,8 +21,11 @@
         <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
       </div>
       <div class="col-6">
-        <%= f.button :submit, "Book experience", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
+          Choose
+        </button>
       </div>
     </div>
   <% end %>
 </div>
+<%= render 'bookings/modal' %>
