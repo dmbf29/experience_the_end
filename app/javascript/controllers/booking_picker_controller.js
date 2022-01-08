@@ -19,30 +19,25 @@ export default class extends Controller {
 
         // update the one day remaining with new date
         const date = new Date(dateStr);
-        const formattedDate = date.toDateString().split(' ').slice(1).join(', ')
+        let formattedDate = date.toDateString().split(' ').slice(1)
+        formattedDate = formattedDate[0] + ' ' + formattedDate[1] + ', ' + formattedDate[2]
         templateDay.dataset.date = dateStr;
         templateDay.querySelector('#booking-date-holder').innerText = formattedDate;
-
-        // Needs to fill in the picker on the modal as well
-        const pickerInputs = document.querySelectorAll(".flatpickr-input");
-        pickerInputs.forEach((picker) => {
-          picker.value = dateStr
-        })
-        const pickerTexts = document.querySelectorAll(".datepicker");
-        pickerTexts.forEach((picker) => {
-          picker.value = formattedDate
-        })
       },
     });
   }
 
-  fillForm(event) {
+  fillModalForm(event) {
     // get date from that day's html dataset
-    const date = event.target.dataset.date;
-    // fill the modal with the date
-    // change to target
-    document.querySelector("#bookingModal .flatpickr-input").value = date;
-    const formattedDate = date.toDateString().split(' ').slice(1).join(', ')
-    document.querySelector("#bookingModal .datepicker").value = formattedDate;
+    const dateStr = event.currentTarget.dataset.date;
+    const date = new Date(dateStr);
+    // Hidden flatpickr input
+    this.modalTarget.querySelector(".flatpickr-input").value = date;
+    console.log(date.toDateString())
+    // const formattedDate = date.toDateString().split(' ').slice(1).join(', ')
+    let formattedDate = date.toDateString().split(' ').slice(1)
+    formattedDate = formattedDate[0] + ' ' + formattedDate[1] + ', ' + formattedDate[2]
+    // Input user sees
+    this.modalTarget.querySelector(".datepicker.input").value = formattedDate;
   }
 }

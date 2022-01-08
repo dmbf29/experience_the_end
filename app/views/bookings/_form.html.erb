@@ -13,7 +13,7 @@
           <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
         </div>
         <div class="col-6 text-end">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-date="<%= day.to_s %>" data-action="click->booking-picker#fillForm">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-date="<%= day.to_s %>" data-action="click->booking-picker#fillModalForm">
             Choose
           </button>
         </div>
