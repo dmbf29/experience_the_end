@@ -37,10 +37,22 @@
   }
 }
 
-.booking-card {
+.new-booking-card {
   border: 1px solid rgb(221, 221, 221);
   border-radius: $default-radius;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background-color: white;
+}
+
+.booking-card {
+  .booking-card--img-text .booking-card--date {
+    padding: 0.25rem 1.5rem;
+    border: 2px solid;
+    color: white;
+    margin: 1rem auto;
+    border-radius: $default-radius;
+    width: fit-content;
+    text-align: center;
+  }
 }

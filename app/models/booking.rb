@@ -12,6 +12,7 @@ class Booking < ApplicationRecord
   scope :need_response, -> { pending.future }
   scope :expired, -> { pending.past }
   scope :completed, -> { accepted.past }
+  scope :not_rejected, -> { where.not(status: :rejected) }
 
   def price
     experience.price * participants

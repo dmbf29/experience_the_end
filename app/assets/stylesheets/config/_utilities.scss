@@ -5,3 +5,31 @@
 .vh-100-minus-nav {
   height: calc(100vh - #{$navbar-height});
 }
+
+@for $i from 1 through 10 {
+  .w-#{$i * 10}p {
+    width: #{$i * 10%};
+  }
+
+  .h-#{$i * 10}p {
+    height: #{$i * 10%};
+  }
+
+  .opacity-#{$i * 10} {
+    opacity: #{$i * 10%};
+  }
+}
+
+@for $i from 1 through 15 {
+  .h-#{$i * 2} {
+    height: #{$i * 2}rem;
+  }
+
+  .w-#{$i * 2} {
+    width: #{$i * 2}rem;
+  }
+}
+
+.fit-cover {
+  object-fit: cover;
+}

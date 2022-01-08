@@ -1,7 +1,9 @@
-.photo-grid {
-  display: grid;
-  gap: 8px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.photo-gallery {
+  display: flex;
+  // // Airbnb style photo gallery below
+  // display: grid;
+  // gap: 8px;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
   a:first-child {
     border-radius: $default-radius 0 0 $default-radius;
     overflow: hidden;
@@ -10,7 +12,7 @@
     border-radius: 0 $default-radius $default-radius 0;
     overflow: hidden;
   }
-  .photo-grid-item {
+  .photo-gallery-item {
     width: 100%;
     height: 100%;
     object-fit: cover;
