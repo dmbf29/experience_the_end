@@ -1,1 +1,8 @@
 <%# Photo gallery component for the show page %>
+<div class="photo-grid mb-4" data-controller="lightbox">
+  <% @experience.photos.each do |photo| %>
+    <%= link_to url_for(photo) do %>
+      <%= cl_image_tag photo.key, width: 400, crop: :fill, class: 'photo-grid-item' %>
+    <% end %>
+  <% end %>
+</div>

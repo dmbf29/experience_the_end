@@ -1,6 +1,8 @@
 class Experience < ApplicationRecord
   belongs_to :user
-  has_many_attached :photos
+  has_many_attached :photos # Should 2-4 photos
+  has_many :bookings
+  has_many :reviews
   validates :name, presence: true
   validates :price, presence: true
   validates :start_time, presence: true
