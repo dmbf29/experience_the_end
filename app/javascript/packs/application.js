@@ -20,6 +20,7 @@ ActiveStorage.start();
 // External imports
 import "bootstrap";
 import "controllers";
+import 'lightgallery/css/lightgallery.css'
 
 // Internal imports, e.g:
 import { initFlatpickr } from "../plugins/flatpickr";
