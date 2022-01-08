@@ -1,6 +1,9 @@
-<%= simple_form_for :search, url: root_path, method: :get, html: { class: "search-form-control" } do |f| %>
+<%= form_tag experiences_path, method: :get, class: "search-form-control" do %>
   <div class="form-group">
-    <input class="form-control string required rounded-pill" type="text" name="search[query]" id="search_query" />
+    <%= text_field :query, nil,
+                   value: params[:query],
+                   class: "form-control string required rounded-pill",
+                   placeholder: "" %>
     <button name="button" type="submit" class="btn btn-primary rounded-circle">
       <i class="fas fa-search"></i>
     </button>

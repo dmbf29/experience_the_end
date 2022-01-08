@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top <%= class_names transparent: local_assigns[:transparent], dark: local_assigns[:dark] %>">
   <div class="container-fluid d-flex justify-content-between position-relative">
     <%= link_to root_path, class: "navbar-brand" do %>
       <i class="ms-3 fas fa-skull-crossbones text-primary"></i>
