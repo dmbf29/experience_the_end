@@ -20,14 +20,13 @@ class ExperiencesController < ApplicationController
   end
 
   def new
-    @experience = Experience.create
+    @experience = Experience.new
     @experience.user = current_user
+    @experience.status = "building"
     @experience.save
     authorize @experience
     redirect_to new_experience_build_path(@experience)
   
   end
-
-  private
 
 end

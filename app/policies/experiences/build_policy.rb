@@ -10,6 +10,7 @@ class BuildPolicy < ApplicationPolicy
   end
 
   def update?
+    raise
     true
   end
 end

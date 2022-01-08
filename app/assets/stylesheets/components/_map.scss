@@ -107,3 +107,14 @@
     }
   }
 }
+
+#wrapper { 
+  position: relative;
+}
+
+#over_map { 
+  position: absolute; 
+  top: 35px; 
+  left: 35%; 
+  z-index: 99;
+}

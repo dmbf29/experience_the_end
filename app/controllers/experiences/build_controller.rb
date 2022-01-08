@@ -15,9 +15,11 @@ class Experiences::BuildController < ApplicationController
 
   def update
     @experience = Experience.find(params[:experience_id])
+    params[:experience][:status] = step.to_s
     params[:experience][:status] = 'active' if step == steps.last
-    @experience.update_attributes(experience_params)
     authorize @experience
+    @experience.update(experience_params)
+    
     render_wizard @experience
   end
 
@@ -42,6 +44,6 @@ class Experiences::BuildController < ApplicationController
 
 
     def experience_params
-      params.require(:experience).permit(:name, :description, :price, :start_time, :end_time, :address, :status, :photos [])
+      params.require(:experience).permit(:name, :description, :price, :start_time, :end_time, :address, :status, photos: [])
     end
 end
