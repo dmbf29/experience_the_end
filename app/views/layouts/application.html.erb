@@ -12,11 +12,9 @@
   </head>
   <body>
     <%= render 'flashes' %>
-    <div class="d-flex flex-column vh-100">
+    <div class="min-vh-100">
       <%= render 'navbar' %>
-      <div class="flex-grow-1 overflow-scroll">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
   </body>
 </html>
