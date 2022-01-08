@@ -1,0 +1,17 @@
+<%= simple_form_for @experience do |f| %>
+  <div class="container">
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <h2 class="mt-2">Where shall your guests meet you?</h2>
+        <p class="mt-5"><strong>Specify the address your experience will take place at</strong></p>
+        <%= f.input :address, as: :string, html5: true, label: false, placeholder: "Shibuya 1-2-3" %>
+      </div>
+    </div>
+  </div>
+  <div class="w-100">
+    <div class="sticky-bottom vh-100-minus-nav">
+      <%= render './experiences/map' %>
+    </div>
+  </div>
+<% end %>
+<%= render 'footer' %>

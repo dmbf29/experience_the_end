@@ -96,7 +96,8 @@ experiences.each do |name, info|
     longitude: Faker::Address.longitude,
     user: User.all.sample,
     start_time: start_time,
-    end_time: end_time
+    end_time: end_time,
+    status: "active",
   )
   info[:image_urls].each do |image_url|
     puts "Opening... #{image_url}"

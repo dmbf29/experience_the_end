@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   namespace :owner do
     resources :bookings, only: [:index]
   end
+  
+  resources :experiences do
+    resources :build, controller: 'experiences/build'
+  end
 end

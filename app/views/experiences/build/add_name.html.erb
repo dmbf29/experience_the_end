@@ -1,0 +1,12 @@
+<%= simple_form_for @experience do |f| %>
+  <div class="container">
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <h2 class="mt-2">Let us give your experience a name</h2>
+        <p class="mt-5">Make it descriptive and unique so guests will understand what you’re offering.</p>
+        <%= f.input :name, as: :text, :input_html => {:rows => 6}, html5: true, label: false, placeholder: "Warm up in a secret hot bath in Iceland" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render 'footer' %>
