@@ -13,7 +13,7 @@
   <body>
     <%= render 'flashes' %>
     <div class="min-vh-100">
-      <%= render 'navbar' %>
+      <%= render 'navbar', transparent: local_assigns[:transparent_nav], dark: local_assigns[:dark_nav] %>
       <%= yield %>
     </div>
   </body>
