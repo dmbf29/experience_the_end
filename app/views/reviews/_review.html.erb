@@ -1,1 +1,14 @@
-
+<div class="col col-6">
+  <div class="host-container p-3 mt-3">
+    <div class="host-name-container">
+      <%= cl_image_tag review.user.photo.key, class: "avatar-large" %>
+      <div class="host-name line" style="line-height: 30%;">
+        <p><strong><%= review.user.first_name %></strong></p>
+        <small class="text-secondary"><%= review.created_at.strftime("%B %Y") %></small>
+      </div>
+    </div>
+    <div class="host-description pe-5">
+      <p><%= review.content.truncate(200) %></p>
+    </div>
+  </div>
+</div>

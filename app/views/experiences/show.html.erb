@@ -17,7 +17,9 @@
   </div>
   <div class="row">
     <%# Map %>
-    <%#= render @experience.reviews %>
+    <% @experience.reviews.each do |review| %>
+      <%= render './reviews/review', review: review %>
+    <% end %>
   </div>
   <div class="row">
     <%# Similar experiences %>
