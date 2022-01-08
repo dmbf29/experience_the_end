@@ -7,13 +7,13 @@
   <%= simple_form_for [@experience, @booking] do |f| %>
     <%= f.input :date, as: :string, label: false, placeholder: "Choose your date...", input_html: {class: "datepicker"} %>
     <% [Date.today, Date.tomorrow, Date.tomorrow + 1].each_with_index do |day, index| %>
-      <div class="row mt-3" data-booking-picker-target="<%= 'extra-day' unless index.zero? %>">
+      <div class="row mt-3" data-booking-picker-target="<%= 'extra' unless index.zero? %>">
         <div class="col-6">
           <small><strong><%= day.to_s(:long) %></strong></small><br>
           <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
         </div>
         <div class="col-6 text-end">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-action="click->booking-picker#fillForm">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-date="<%= day.to_s %>" data-action="click->booking-picker#fillForm">
             Choose
           </button>
         </div>
