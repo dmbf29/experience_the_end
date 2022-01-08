@@ -2,25 +2,26 @@ import { Controller } from "stimulus";
 import flatpickr from "flatpickr";
 
 export default class extends Controller {
-  static targets = ["extra", "modal"]
+  static targets = ["extra", "modal", "template"];
   connect() {
+    const templateDay = this.templateTarget;
     const extraDays = this.extraTargets;
     flatpickr(".datepicker", {
+      // disable past
+
       altInput: true,
       onChange: function (selectedDates, dateStr, instance) {
-        const templateDate = document.querySelector(".template-date");
-        const todayDate = document.querySelector(".today-date");
-        // remove the extra dates
+
+        // remove the extra days
         extraDays.forEach((target) => {
           target.remove();
         });
 
+        // update the one day remaining with new date
         const date = new Date(dateStr);
-        const formattedDate = date.toDateString().split(' ').slice(1).join(' ')
-        // also update dataset
-        templateDate.innerHTML = formattedDate;
-
-
+        const formattedDate = date.toDateString().split(' ').slice(1).join(', ')
+        templateDay.dataset.date = dateStr;
+        templateDay.querySelector('#booking-date-holder').innerText = formattedDate;
 
         // Needs to fill in the picker on the modal as well
         const pickerInputs = document.querySelectorAll(".flatpickr-input");
@@ -41,7 +42,7 @@ export default class extends Controller {
     // fill the modal with the date
     // change to target
     document.querySelector("#bookingModal .flatpickr-input").value = date;
-    const formattedDate = date.toDateString().split(' ').slice(1).join(' ')
+    const formattedDate = date.toDateString().split(' ').slice(1).join(', ')
     document.querySelector("#bookingModal .datepicker").value = formattedDate;
   }
 }
