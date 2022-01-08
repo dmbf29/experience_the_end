@@ -11,13 +11,13 @@
         <li class="nav-item px-2">
           <%= link_to "Browse experiences", experiences_path, class: "nav-link" %>
         </li>
+        <li class="nav-item px-2">
+          <% if !current_user&.owner? %>
+            <%= link_to "Become a guide", new_experience_path, class: "nav-link" %>
+          <% end %>
+        </li>
         <% if user_signed_in? %>
-          <li class="nav-item px-2">
-            <% if !current_user.owner? %>
-              <%= link_to "Become a Guide", new_experience_path, class: "nav-link" %>
-            <% end %>
-          </li>
-          <li class="nav-item dropdown dropstart">
+          <li class="nav-item dropdown dropstart ps-2">
             <%= content_tag :div, id: "navbarDropdownMenuLink", data: { "bs-toggle": "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, role: "button", class: "d-flex align-items-center" do %>
               <i class="fas fa-bars me-2"></i>
               <%= render 'avatar', user: current_user, border: true %>
@@ -41,13 +41,9 @@
                     <% end %>
                   <% end %>
                 </li>
-                <hr>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-                </li>
               <% end %>
+              <hr>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
           </li>
         <% else %>
