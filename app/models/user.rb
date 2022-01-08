@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :reviews_as_owner, through: :experiences, source: :reviews
   has_one_attached :photo
 
+  def owner?
+    experiences.any?
+  end
+
   def owner_rating
     reviews_as_owner.average(:rating).round(2)
   end
@@ -21,7 +25,11 @@ class User < ApplicationRecord
     ((1 - bookings_as_owner.expired.count.to_f / bookings_as_owner.count) * 100).round
   end
 
-  def owner_earnings
-    bookings_as_owner.sum('experiences.price * participants')
+  def owner_total_earnings
+    bookings_as_owner.completed.sum('experiences.price * participants')
+  end
+
+  def owner_monthly_earnings
+    bookings_as_owner.completed.group_by_month(:date).sum('experiences.price * participants')
   end
 end

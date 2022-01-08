@@ -1,5 +1,5 @@
 <div class="d-flex position-relative align-items-center border-bottom py-2">
-  <%= render 'avatar', user: booking.user %>
+  <%= render 'avatar', user: booking.user, large: true, border: true %>
   <div class="m-3">
     <h6 class="text-primary d-flex align-items-center">
       <%= booking_status_badge(booking) %> <%= booking.user.first_name %> · <small><%= booking.date.strftime('%b %d, %Y') %></small>

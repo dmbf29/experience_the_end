@@ -8,6 +8,7 @@ $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
 $body-bg:                 $light-gray;
 $font-size-base: 1rem;
+$font-weight-base: 300;
 
 // Colors
 $body-color: $gray;
@@ -23,7 +24,7 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-$btn-border-radius: 8px;
+$btn-border-radius: $default-radius;
 $btn-font-weight: lighter;
 
 // I can't find a way to override $btn-color....
