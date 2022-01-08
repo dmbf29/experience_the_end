@@ -4,13 +4,17 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
   static targets = ["extra", "modal"]
   connect() {
+    const extraDays = this.extraTargets;
     flatpickr(".datepicker", {
       altInput: true,
       onChange: function (selectedDates, dateStr, instance) {
         const templateDate = document.querySelector(".template-date");
         const todayDate = document.querySelector(".today-date");
         // remove the extra dates
-        todayDate.style.display = "none";
+        extraDays.forEach((target) => {
+          target.remove();
+        });
+
         const date = new Date(dateStr);
         const formattedDate = date.toDateString().split(' ').slice(1).join(' ')
         // also update dataset

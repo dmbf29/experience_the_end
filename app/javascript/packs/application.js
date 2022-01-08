@@ -26,5 +26,5 @@ import 'lightgallery/css/lightgallery.css'
 // import { initFlatpickr } from "../plugins/flatpickr";
 
 document.addEventListener("turbolinks:load", () => {
-  // initFlatpickr();
+  // call your functions here
 });
