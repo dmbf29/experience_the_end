@@ -8,6 +8,7 @@ class Experience < ApplicationRecord
   validates :end_time, presence: true, if: :active_or_end?
   validates :price, presence: true, if: :active_or_price?
   validates :description, presence: true, if: :active_or_description?
+  validates :address, presence: true, if: :active_or_address?
   
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -43,5 +44,9 @@ class Experience < ApplicationRecord
 
   def active_or_price?
     status.include?('price') || active?
+  end
+
+  def active_or_address?
+    status.include?('address') || active?
   end
 end

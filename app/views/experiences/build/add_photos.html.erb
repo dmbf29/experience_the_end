@@ -4,7 +4,9 @@
       <div class="col-12 col-sm-10 col-md-8 col-lg-6">
         <h2 class="mt-2">Add your photos</h2>
         <p class="mt-5">We will review every photo before it goes live on your experience page.</p>
-        <%= f.input :attachment, as: :file, label: false %>
+        <div class="photo-form-box">
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
+        </div>
       </div>
     </div>
   </div>
