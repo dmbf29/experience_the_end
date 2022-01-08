@@ -22,6 +22,7 @@ export default class extends Controller {
         let formattedDate = date.toDateString().split(' ').slice(1)
         formattedDate = formattedDate[0] + ' ' + formattedDate[1] + ', ' + formattedDate[2]
         templateDay.dataset.date = dateStr;
+        templateDay.querySelector("button").dataset.date = dateStr;
         templateDay.querySelector('#booking-date-holder').innerText = formattedDate;
       },
     });
@@ -33,7 +34,6 @@ export default class extends Controller {
     const date = new Date(dateStr);
     // Hidden flatpickr input
     this.modalTarget.querySelector(".flatpickr-input").value = date;
-    console.log(date.toDateString())
     // const formattedDate = date.toDateString().split(' ').slice(1).join(', ')
     let formattedDate = date.toDateString().split(' ').slice(1)
     formattedDate = formattedDate[0] + ' ' + formattedDate[1] + ', ' + formattedDate[2]
