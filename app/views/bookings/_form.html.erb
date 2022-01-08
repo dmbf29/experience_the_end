@@ -8,7 +8,7 @@
   <%= simple_form_for [@experience, @booking] do |f| %>
     <%= f.input :date, as: :string, label: false, placeholder: "Choose your date...", input_html: { class: "datepicker" } %>
     <% [Date.today, Date.tomorrow, Date.tomorrow + 1].each_with_index do |day, index| %>
-      <div class="row py-3 align-items-center <%= 'top-booking-card-border' unless index.zero? %>" data-booking-picker-target="<%= index.zero? ? 'template' : 'extra' %>">
+      <div class="row py-3 align-items-center <%= 'border-top' unless index.zero? %>" data-booking-picker-target="<%= index.zero? ? 'template' : 'extra' %>">
         <div class="col-6">
           <small><strong id="booking-date-holder"><%= day.to_s(:long) %></strong></small><br>
           <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
