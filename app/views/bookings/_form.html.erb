@@ -1,31 +1,25 @@
 <div class="booking-card">
-  <h4>From ¥<%= number_with_delimiter(@experience.price) %>/ person</h4>
+  <div class="d-flex align-items-baseline">
+    <h4 class="lh-lg mb-1">From ¥<%= number_with_delimiter(@experience.price) %></h4>
+    <p class="lh-lg fw-lighter mb-2"> / person</p>
+  </div>
   <small class="text-muted"><u>Show all prices</u></small>
   <%= simple_form_for [@experience, @booking] do |f| %>
     <%= f.input :date, as: :string, label: false, placeholder: "Choose your date...", input_html: {class: "datepicker"} %>
-    <div class="row mt-3 today-date">
-      <div class="col-6">
-        <small><strong><%= Date.today.to_s(:long) %></strong></small><br>
-        <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
+    <% [Date.today, Date.tomorrow, Date.tomorrow + 1].each do |day| %>
+      <div class="row mt-3 today-date">
+        <div class="col-6">
+          <small><strong><%= day.to_s(:long) %></strong></small><br>
+          <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
+        </div>
+        <div class="col-6 text-end">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
+            Choose
+          </button>
+        </div>
       </div>
-      <div class="col-6">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
-          Choose
-        </button>
-      </div>
-    </div>
-    <hr>
-    <div class="row mt-3">
-      <div class="col-6">
-        <small class="template-date"><strong><%= Date.tomorrow.to_s(:long) %></strong></small><br>
-        <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
-      </div>
-      <div class="col-6">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
-          Choose
-        </button>
-      </div>
-    </div>
+      <hr>
+    <% end %>
   <% end %>
 </div>
 <%= render 'bookings/modal' %>
