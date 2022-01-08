@@ -7,8 +7,7 @@ export default class extends Controller {
     const templateDay = this.templateTarget;
     const extraDays = this.extraTargets;
     flatpickr(".datepicker", {
-      // disable past
-
+      minDate: "today",
       altInput: true,
       onChange: function (selectedDates, dateStr, instance) {
 
