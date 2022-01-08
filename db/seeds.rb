@@ -66,7 +66,7 @@ Booking.destroy_all
 Experience.destroy_all
 puts "...done"
 
-puts "Creating experiences..."
+puts "Creating experiences and reviews..."
 # Should 2-4 photos
 experiences = {
   'Russian Roulette' => { image_urls: %w[https://cdni.rbth.com/rbthmedia/images/2020.09/article/5f635cd815e9f96e561ab183.jpg https://d4r15a7jvr7vs.cloudfront.net/ewoJICAgICAgICAgICAgICAgICJidWNrZXQiOiAiZmlsZXMubGJyLmNsb3VkIiwKCSAgICAgICAgICAgICAgICAia2V5IjogInB1YmxpYy93a29pMWx4aTlkbzRwNm5yb2J4OC5qcGciLAoJICAgICAgICAgICAgICAgICJlZGl0cyI6IHsKCSAgICAgICAgICAgICAgICAgICJyZXNpemUiOiB7CgkgICAgICAgICAgICAgICAgICAgICJ3aWR0aCI6IDk0NSwKCSAgICAgICAgICAgICAgICAgICAgImhlaWdodCI6IDUyNiwKCSAgICAgICAgICAgICAgICAgICAgImZpdCI6ICJjb3ZlciIKCSAgICAgICAgICAgICAgICAgIH0KCSAgICAgICAgICAgICAgICB9CgkgICAgICAgICAgICB9 https://www.ladbible.com/cdn-cgi/image/width=720,quality=70,format=jpeg,fit=pad,dpr=1/https%3A%2F%2Fs3-images.ladbible.com%2Fs3%2Fcontent%2F280fe5265806db00c51b621549929495.jpg https://media.istockphoto.com/photos/russian-roulette-concept-picture-id460629527?k=20&m=460629527&s=612x612&w=0&h=y7H1eMU-Gc-1HSccd3SLPBsPg2xu7ZtyNOF-2K9jwcE=] },
@@ -104,6 +104,16 @@ experiences.each do |name, info|
     file = URI.open(image_url)
     experience.photos.attach(io: file, filename: 'experience.jpg', content_type: 'image/jpg')
   end
+
+  rand(50).times do
+    Review.create!(
+      user: User.where.not(id: experience.user).sample,
+      experience: experience,
+      # TODO: Seed more realistic review contents
+      content: Faker::TvShows::RickAndMorty.quotes,
+      rating: 1 + Math.log(rand(1..90)).round # creating a rating distribution squewed towards 5
+    )
+  end
   bar.increment!
 end
 puts "Created #{Experience.count} experiences..."
@@ -112,12 +122,21 @@ puts "Creating 2 bookings for each user"
 bar = ProgressBar.new(User.count * 2)
 User.find_each do |user|
   experiences = Experience.all.sample(2)
+  booking_date = Date.today + rand(-10..20)
+  status =
+    if booking_date < Date.today
+      # For past bookings, assign a random status, including some that were not replied to (will show as expired)
+      rand(0..6).zero? ? :pending : [:accepted, :rejected].sample
+    else
+      :pending
+    end
   experiences.each do |experience|
     booking = Booking.new(
       user: user,
       experience: experience,
-      date: Date.today + rand(5..20),
-      participants: rand(1..3)
+      date: booking_date,
+      participants: rand(1..3),
+      status: status
     )
   booking.save!
   end

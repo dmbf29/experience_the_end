@@ -1,7 +1,7 @@
 .btn-ghost {
   border: 1px solid;
   padding: 8px 24px;
-  border-radius: 10px;
+  border-radius: $default-radius;
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;

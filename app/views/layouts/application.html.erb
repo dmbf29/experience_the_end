@@ -12,11 +12,9 @@
   </head>
   <body>
     <%= render 'flashes' %>
-    <div class="d-flex flex-column vh-100">
-      <%= render 'navbar' %>
-      <div class="flex-grow-1 overflow-scroll">
-        <%= yield %>
-      </div>
+    <div class="min-vh-100">
+      <%= render 'navbar', transparent: local_assigns[:transparent_nav], dark: local_assigns[:dark_nav] %>
+      <%= yield %>
     </div>
   </body>
 </html>
