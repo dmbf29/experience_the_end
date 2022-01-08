@@ -1,0 +1,47 @@
+.navbar {
+  min-height: $navbar-height;
+  z-index: 1100;
+  padding: 0 2.5rem;
+
+  hr {
+    margin: 0.25rem 0;
+    color: lightgray;
+  }
+  .dropdown-menu {
+    min-width: 16rem;
+    border-radius: $default-radius;
+  }
+  .dropdown-item {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 300;
+  }
+  .additional-nav {
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      li {
+        margin: 0 0.75rem;
+        padding: 0 0.25rem;
+        display: inline;
+      }
+      .active {
+        border-bottom: 3px solid $primary !important;
+        color: $primary !important;
+        font-weight: bold;
+      }
+      .btn{
+        border-radius: 0;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

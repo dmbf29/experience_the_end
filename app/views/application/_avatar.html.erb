@@ -1,1 +1,12 @@
-<%= cl_image_tag user.photo.key, alt: :avatar, class: 'rounded-circle', width: 50, height: 50 %>
+<% if current_user.photo.attached? %>
+  <%= cl_image_tag user.photo.key,
+                   alt: :avatar,
+                   class: "avatar #{class_names(
+                     'avatar-large': local_assigns[:large],
+                     'avatar-bordered': local_assigns[:border],
+                     'avatar-square': local_assigns[:square])
+                    }"
+  %>
+<% else %>
+  <span>A</span>
+<% end %>

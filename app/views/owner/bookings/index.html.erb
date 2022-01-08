@@ -1,12 +1,12 @@
-<div class="bg-secondary sticky-top">
-  <ul class="container nav nav-pills mb-3" role="tablist">
+<%= content_for :nav do %>
+  <ul class="nav" role="tablist">
     <li>
-      <button class="px-5 nav-link text-white active" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">
+      <button class="btn active" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">
         Upcoming
       </button>
     </li>
     <li>
-      <button class="px-5 nav-link text-white d-flex align-items-center" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">
+      <button class="btn d-flex align-items-center" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">
         Pending
         <% if @bookings.need_response.any? %>
           <span class="ms-1 badge rounded-pill bg-dark"><%= @bookings.need_response.size %></span>
@@ -14,13 +14,13 @@
       </button>
     </li>
     <li>
-      <button class="px-5 nav-link text-white" id="history-tab" data-bs-toggle="pill" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">
+      <button class="btn" id="history-tab" data-bs-toggle="pill" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">
         History
       </button>
     </li>
   </ul>
-</div>
-<div class="container mb-4">
+<% end %>
+<div class="container my-4">
   <div class="row">
     <div class="col col-md-8 px-4">
       <div class="tab-content">

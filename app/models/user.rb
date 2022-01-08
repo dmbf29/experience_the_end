@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :reviews_as_owner, through: :experiences, source: :reviews
   has_one_attached :photo
 
+  def owner?
+    experiences.any?
+  end
+
   def owner_rating
     reviews_as_owner.average(:rating).round(2)
   end
