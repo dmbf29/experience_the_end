@@ -123,3 +123,17 @@ User.find_each do |user|
   bar.increment!
 end
 puts "Created #{Booking.count} bookings..."
+
+puts "Creating 2 reviews for each experience"
+Experience.find_each do |experience|
+  users = User.all.sample(2)
+  users.each do |user|
+    review = Review.new(
+      user: user,
+      content: Faker::Restaurant.review,
+      experience: experience,
+      rating: rand(1..5)
+    )
+ review.save!
+  end
+end
