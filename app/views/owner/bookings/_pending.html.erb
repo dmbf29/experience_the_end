@@ -1,0 +1,9 @@
+<div class="mt-4">
+  <h2>Pending requests</h2>
+  <% if bookings.any? %>
+    <p><%= pluralize(bookings.size, 'pending request') %> · <%= current_user.owner_response_rate %>% response rate</p>
+    <%= render partial: bookings %>
+  <% else %>
+    <p>You have no pending requests.</p>
+  <% end %>
+</div>

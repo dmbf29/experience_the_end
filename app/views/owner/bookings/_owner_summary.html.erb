@@ -1,0 +1,47 @@
+<div class="border container p-4 bg-white">
+  <div class="row gy-4">
+    <h3>Guide summary</h3>
+    <div>
+      <h5>Fantastic job!</h5>
+      <p>Thrillseekers are loving what you're doing. Keep up the great work!</p>
+    </div>
+    <hr class="mb-0">
+    <div class="d-flex justify-content-between align-items-center">
+      <h6 class="m-0"><%= Date::MONTHNAMES[Date.today.month] %> earnings</h6>
+      <p class="m-0 text-primary"><%= currency(current_user.owner_monthly_earnings[Date.today.beginning_of_month]) || '-' %></p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h6 class="m-0">Last month's earnings</h6>
+      <p class="m-0 text-primary"><%= currency(current_user.owner_monthly_earnings[(Date.today - 1.month).beginning_of_month]) || '-' %></p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h6 class="m-0">Total earnings</h6>
+      <p class="m-0 text-primary"><%= currency(current_user.owner_total_earnings) %></p>
+    </div>
+    <hr class="mb-0">
+    <% if current_user.reviews_as_owner.any? %>
+      <div class="d-flex justify-content-between align-items-center">
+        <h6 class="m-0">Overall rating</h6>
+        <p class="m-0 text-primary d-flex align-items-center">
+          <%= current_user.owner_rating %>&nbsp;<i class="fas fa-star text-primary fa-sm"></i>
+        </p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h6 class="m-0">Total reviews</h6>
+        <p class="m-0 text-primary"><%= current_user.reviews_as_owner.size %></p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h6 class="m-0">5-star reviews</h6>
+        <p class="m-0 text-primary">
+          <%= current_user.owner_rate_5_stars %>%
+        </p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h6 class="m-0">Survival rate</h6>
+        <p class="m-0 text-primary">100%</p>
+      </div>
+    <% else %>
+      <p class="text-center"><small>You don't have any reviews yet.</small></p>
+    <% end %>
+  </div>
+</div>

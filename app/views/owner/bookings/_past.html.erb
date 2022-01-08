@@ -1,0 +1,9 @@
+<div class="mt-4">
+  <h2>Booking history</h2>
+  <% if bookings.any? %>
+    <p><%= pluralize(bookings.size, 'past booking') %> · <%= current_user.owner_response_rate %>% response rate</p>
+    <%= render partial: bookings %>
+  <% else %>
+    <p>You have no past bookings.</p>
+  <% end %>
+</div>
