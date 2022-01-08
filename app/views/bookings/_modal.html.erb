@@ -10,7 +10,7 @@
           <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
           <%= f.input :date, as: :string, label: false, placeholder: "Choose your date...", input_html: { class: "datepicker" } %>
           <%= f.input :participants, input_html: { value: 1 } %>
-          <div class="modal-footer">
+          <div class="modal-footer mt-3">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <%= f.button :submit, "Book Experience", class: "btn btn-primary" %>
           </div>
