@@ -1,0 +1,19 @@
+<div class="d-flex position-relative align-items-center border-bottom py-2">
+  <%= render 'avatar', user: booking.user, large: true, border: true %>
+  <div class="m-3">
+    <h6 class="text-primary d-flex align-items-center">
+      <%= booking_status_badge(booking) %> <%= booking.user.first_name %> · <small><%= booking.date.strftime('%b %d, %Y') %></small>
+    </h6>
+    <p class="m-0">
+      <%= booking.experience.name %> · <%= pluralize(booking.participants, 'participant') %> · <%= currency(booking.price) %>
+    </p>
+    <% if booking.pending? %>
+      <p class="m-0 fw-light fst-italic">
+        <small>Request expires in <%= distance_of_time_in_words Time.now, booking.date.beginning_of_day %></small>
+      </p>
+    <% end %>
+  </div>
+  <div class="position-absolute bottom-50 end-0">
+    <%= render 'accept_reject_booking', booking: booking %>
+  </div>
+</div>

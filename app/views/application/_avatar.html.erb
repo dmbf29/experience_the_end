@@ -1,0 +1,8 @@
+<%= image_tag current_user.photo.attached? ? cl_image_path(user.photo.key) : 'default_avatar.jpg',
+              alt: :avatar,
+              class: "avatar #{class_names(
+                'avatar-large': local_assigns[:large],
+                'avatar-bordered': local_assigns[:border],
+                'avatar-square': local_assigns[:square])
+              }"
+%>

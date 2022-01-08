@@ -9,7 +9,7 @@
     height: 100%;
     width: 140px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: $default-radius;
   }
   h2 {
     font-size: 16px;
@@ -39,18 +39,8 @@
 
 .booking-card {
   border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
+  border-radius: $default-radius;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background-color: white;
-}
-
-.datepicker {
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-  background-color: white;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }

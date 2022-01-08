@@ -13,8 +13,9 @@
     justify-content: center;
     position: relative;
     width: 100vw;
-    height: calc(100vh - 80px);
     overflow: hidden;
+    min-height: calc(100vh - #{$navbar-height});
+    margin-top: $navbar-height;
 
     // Noise/static
     &:after {
@@ -32,6 +33,13 @@
     }
   }
 
+  // Search bar
+  .search-form-control {
+    position: absolute;
+    top: 16px;
+    width: var(--skull-size);
+    z-index: 99999;
+  }
 
   // Skull
   .skull {

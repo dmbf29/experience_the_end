@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :update]
   namespace :owner do
     resources :bookings, only: [:index]
+    resources :experiences, only: [:index]
   end
 end
