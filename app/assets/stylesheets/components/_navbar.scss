@@ -1,0 +1,19 @@
+.navbar {
+  height: $navbar-height;
+  z-index: 1100;
+  padding: 0 2.5rem;
+
+  hr {
+    margin: 0.25rem 0;
+    color: lightgray;
+  }
+  .dropdown-menu {
+    min-width: 16rem;
+    border-radius: $default-radius;
+  }
+  .dropdown-item {
+    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    font-weight: 300;
+  }
+}

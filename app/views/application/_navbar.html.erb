@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <div class="container-fluid d-flex">
     <%= link_to root_path, class: "navbar-brand" do %>
       <i class="ms-3 fas fa-skull-crossbones text-primary"></i>
@@ -8,22 +8,41 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
+        <li class="nav-item px-2">
+          <%= link_to "Browse experiences", experiences_path, class: "nav-link" %>
+        </li>
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Experiences", experiences_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Be a Guide", new_experience_path, class: "nav-link" %>
+          <li class="nav-item px-2">
+            <% if !current_user.owner? %>
+              <%= link_to "Become a Guide", new_experience_path, class: "nav-link" %>
+            <% end %>
           </li>
           <li class="nav-item dropdown dropstart">
             <%= content_tag :div, id: "navbarDropdownMenuLink", data: { "bs-toggle": "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, role: "button", class: "d-flex align-items-center" do %>
               <i class="fas fa-bars me-2"></i>
               <%= render 'avatar', user: current_user, border: true %>
             <% end %>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu shadow-lg fw-lighter" aria-labelledby="navbarDropdownMenuLink">
               <% if user_signed_in? %>
-                <li><%= link_to "Be a Guide", new_experience_path, class: "dropdown-item" %></li>
-                <li><%= link_to "Experiences", experiences_path, class: "dropdown-item" %></li>
+                <li><%= link_to "Booked experiences", bookings_path, class: "dropdown-item" %></li>
+                <li><%= link_to "Wishlist", nil, class: "dropdown-item" %></li>
+                <li><%= link_to "Profile", nil, class: "dropdown-item" %></li>
+                <hr>
+                <li><%= link_to "Guide an experience", new_experience_path, class: "dropdown-item" %></li>
+                <% if current_user.owner? %>
+                  <li><%= link_to "Manage experiences", owner_experiences_path, class: "dropdown-item" %></li>
+                  <li>
+                    <%= link_to owner_bookings_path, class: "dropdown-item d-flex align-items-center" do %>
+                      Manage reservations
+                      <% if current_user.bookings_as_owner.pending.any? %>
+                        <span class="badge rounded-pill bg-danger ms-1">
+                          <%= current_user.bookings_as_owner.pending.size %>
+                        </span>
+                      <% end %>
+                    <% end %>
+                  </li>
+                <% end %>
+                <hr>
                 <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
               <% else %>
                 <li class="nav-item">
@@ -33,7 +52,7 @@
             </ul>
           </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
