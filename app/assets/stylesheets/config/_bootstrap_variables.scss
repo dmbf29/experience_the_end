@@ -19,8 +19,8 @@ $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
+$border-radius:    $default-radius;
+$border-radius-lg: $default-radius;
 $border-radius-sm: 2px;
 
 // Override other variables below!
