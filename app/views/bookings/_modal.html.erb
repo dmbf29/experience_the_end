@@ -6,17 +6,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" data-controller='price-update'>
-        <div class="d-flex justify-content-between align-items-baseline">
-          <div class="d-flex align-items-baseline">
-            <h4 class="lh-lg mb-1 me-1" >¥<span data-price-update-target='price'><%= number_with_delimiter(@experience.price) %> </span></h4>
-            <p class="lh-lg fw-lighter mb-2"> total</p>
-          </div>
-          <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
-        </div>
         <%= simple_form_for [@experience, @booking] do |f| %>
           <%= f.input :date, as: :string, label: false, placeholder: "Choose your date...", input_html: { class: "datepicker" } %>
           <%= f.input :participants, input_html: { value: 1, min: 1, max: 10, data: { action: "change->price-update#update", price: @experience.price } } %>
-          <div class="modal-footer mt-3">
+          <div class="d-flex justify-content-between align-items-baseline mt-3">
+            <div class="d-flex align-items-baseline">
+              <h4 class="lh-lg mb-1 me-1" >¥<span data-price-update-target='price'><%= number_with_delimiter(@experience.price) %> </span></h4>
+              <p class="lh-lg fw-lighter mb-2"> total</p>
+            </div>
+            <small class="text-muted"><%= @experience.start_time_formatted %> - <%= @experience.end_time_formatted %></small>
+          </div>
+          <div class="modal-footer mt-2">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <%= f.button :submit, "Book Experience", class: "btn btn-primary" %>
           </div>
