@@ -1,0 +1,20 @@
+<%= simple_form_for @experience, url: wizard_path, method: :put do |f| %>
+  <div class="container">
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <h2 class="mt-2 mb-5">Where shall your guests meet you?</h2>
+      </div>
+    </div>
+  </div>
+  <div class="position-relative">
+    <div class="w-100">
+      <div class="sticky-bottom vh-100">
+        <%= render 'experiences/map' %>
+      </div>
+    </div>
+    <div id="over_map">
+      <%=  f.input :address, as: :string, input_html: { class: "address-card" }, html5: true, label: false, placeholder: "📍  Shibuya 1-2-3" %>
+    </div>
+  </div>
+  <%= render 'footer', f: f %>
+<% end %>

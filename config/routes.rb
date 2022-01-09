@@ -10,4 +10,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index]
     resources :experiences, only: [:index]
   end
+  
+  resources :experiences do
+    resources :build, controller: 'experiences/build'
+  end
 end

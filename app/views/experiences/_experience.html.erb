@@ -4,8 +4,8 @@
   <div class="card-experience-infos w-100">
     <div>
       <div class="d-flex justify-content-between align-items-center">
-        <h2 class='fw-light'><%= experience.name %></h2>
-        <i class="far fa-heart"></i>
+        <h5 class="fw-light"><%= experience.name %></h5>
+        <i class="far fa-heart fa-lg"></i>
       </div>
       <div class="divider-mini"></div>
       <p><strong>What We'll do:</strong></p>
@@ -16,9 +16,9 @@
         <%= render 'reviews/details', experience: experience %>
       </div>
       <div>
-        <strong>¥<%= number_with_delimiter(experience.price, delimiter: ",") %></strong> / person
+        <span class="fw-bold">¥<%= number_with_delimiter(experience.price, delimiter: ",") %></span> / person
       </div>
     </div>
   </div>
-  <%= link_to '', experience_path(experience), class: 'card-experience-link'  %>
+  <%= link_to '', experience_path(experience), class: 'card-experience-link' %>
 </div>
