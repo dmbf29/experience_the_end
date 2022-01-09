@@ -7,11 +7,9 @@
 
   .mapboxgl-marker {
     z-index: 1;
-
     &:hover {
       z-index: 2;
     }
-
     .map-marker {
       display: flex;
       align-items: center;
@@ -28,86 +26,69 @@
       min-width: 5em;
     }
   }
-
   .mapboxgl-popup {
     $popup-width: 300px;
     $photo-left-width: calc(#{$popup-width} * 3/5);
     $photo-right-width: calc(#{$popup-width} * 2/5);
     width: $popup-width;
     z-index: 10;
-
     .mapboxgl-popup-content {
       width: $popup-width;
       padding: 0 !important;
       background-color: transparent !important;
     }
-
     .map-popup {
       border-radius: 12px;
       overflow: hidden;
       background-color: white;
       font-size: 1rem;
-
       .photo-grid {
         overflow: hidden;
         display: grid;
         grid-template-rows: 120px 120px;
         grid-template-columns: $photo-left-width $photo-right-width;
-
         .photo {
           overflow: hidden;
         }
-
         img {
           object-fit: cover;
           width: 100%;
           height: 100%;
         }
-
         @keyframes zoom-in {
           from {
             transform: translate(0, 0) scale(1);
           }
-
           to {
             transform: translate(-1.25%, -1.25%) scale(1.05);
           }
         }
-
         .photo:first-child img {
           width: $popup-width;
           animation: zoom-in 4s ease-out forwards;
         }
-
         &.grid-2-photos .photo,
         &.grid-3-photos .photo {
           width: $photo-right-width;
-
           &:first-child, &:first-child img {
             width: $photo-left-width !important;
           }
         }
-
         &.grid-1-photo {
           grid-template-areas: "a a""a a";
         }
-
         &.grid-2-photos {
           grid-template-areas: "a b""a b";
         }
-
         &.grid-3-photos {
           grid-template-areas: "a b""a c";
         }
-
         .photo:nth-child(1) {
           grid-area: a;
         }
-
         .photo:nth-child(2) {
           grid-area: b;
         }
-
         .photo:nth-child(3) {
           grid-area: c;
         }
