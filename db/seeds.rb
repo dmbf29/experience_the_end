@@ -110,7 +110,7 @@ experiences.each do |name, info|
       user: User.where.not(id: experience.user).sample,
       experience: experience,
       # TODO: Seed more realistic review contents
-      content: Faker::TvShows::RickAndMorty.quotes,
+      content: Faker::Restaurant.review,
       rating: 1 + Math.log(rand(1..90)).round # creating a rating distribution squewed towards 5
     )
   end
