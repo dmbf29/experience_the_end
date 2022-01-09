@@ -40,6 +40,7 @@ gem 'groupdate'
 gem 'progress_bar'
 gem 'pundit'
 gem 'simple_form'
+gem 'wicked'
 
 group :development, :test do
   gem 'pry-byebug'
