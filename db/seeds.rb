@@ -121,7 +121,7 @@ puts "Created #{Experience.count} experiences..."
 puts "Creating 2 bookings for each user"
 bar = ProgressBar.new(User.count * 2)
 User.find_each do |user|
-  experiences = Experience.all.sample(2)
+  experiences = Experience.active.sample(2)
   booking_date = Date.today + rand(-10..20)
   status =
     if booking_date < Date.today

@@ -12,6 +12,7 @@ class Experience < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   # TODO: The seeds don't have proper addresses
+  enum status: { building: 'building', active: 'active' }
 
   def duration
     return nil unless end_time && start_time
@@ -25,10 +26,6 @@ class Experience < ApplicationRecord
 
   def end_time_formatted
     end_time.strftime('%l%p')
-  end
-
-  def active?
-    status == 'active'
   end
 
   def active_or_name?
