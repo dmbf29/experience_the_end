@@ -5,3 +5,13 @@
 .vh-100-minus-nav {
   height: calc(100vh - #{$navbar-height});
 }
+
+.radius-none-left {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.radius-none-right {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
