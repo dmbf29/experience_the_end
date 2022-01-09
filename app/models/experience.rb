@@ -22,10 +22,6 @@ class Experience < ApplicationRecord
     end_time.strftime('%l%p')
   end
 
-  def active?
-    status == 'active'
-  end
-
   def active_or_name?
     status.include?('name') || active?
   end
