@@ -6,10 +6,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.experience.user != user
   end
 
   def update?
-    true
+    record.user == user
   end
 end
