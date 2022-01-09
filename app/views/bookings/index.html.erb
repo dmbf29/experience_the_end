@@ -1,8 +1,30 @@
-<%# Style reference %>
-<%# https://www.airbnb.com/trips/v1/ %>
-<h2>Trips</h2>
-<%# Tabs: Upcoming, Past, Canceled %>
-<div class="grid">
-  <%# Tab contents %>
-  <%#= render @bookings %>
+<div class="container py-4">
+  <div class="row">
+    <div class="col">
+      <%# Upcoming bookings %>
+      <h2 class="mt-5 mb-4">Your next experiences</h2>
+      <% if @bookings.future.not_rejected.any? %>
+        <p>Get your affairs in order, and prepare for your next <%= 'experience'.pluralize(@bookings.future.count) %>...</p>
+        <%= render @bookings.future.not_rejected %>
+      <% else %>
+        <%= render 'no_bookings' %>
+      <% end %>
+      <%# Past bookings %>
+      <h4 class="mt-5">Experiences you've survived</h4>
+      <% if @bookings.completed.any? %>
+        <div class="grid-3-cols mt-4">
+          <%= render @bookings.completed, thumbnail: true %>
+        </div>
+      <% else %>
+        <p>You have no past experiences yet.</p>
+      <% end %>
+      <% if @bookings.rejected.any? %>
+        <%# Rejected - should we show them? %>
+        <h4 class="mt-5">Rejected</h4>
+        <div class="grid-3-cols mt-4">
+          <%= render @bookings.rejected, thumbnail: true %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

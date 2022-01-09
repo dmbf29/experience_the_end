@@ -1,0 +1,10 @@
+<%= link_to experience_path(booking.experience) do %>
+  <%# Linking to the experience since there is no bookings#show %>
+  <div class="booking-thumbnail d-flex">
+    <%= cl_image_tag booking.experience.photos.first.key, width: 80, height: 80, class: 'fit-cover rounded' %>
+    <div class="my-auto ps-3">
+      <h6><%= booking.experience.name %></h6>
+      <p class="m-0"><%= booking.date.strftime('%b %d, %Y') %> · Guided by <%= booking.experience.user.first_name %></p>
+    </div>
+  </div>
+<% end %>

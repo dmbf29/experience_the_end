@@ -7,6 +7,9 @@ module ApplicationHelper
     if booking.date < Date.today
       label = { pending: 'Expired', accepted: 'Completed', rejected: 'Rejected' }[booking.status.to_sym]
       color = { pending: 'secondary', accepted: 'primary', rejected: 'secondary' }[booking.status.to_sym]
+    elsif booking.user == current_user
+      label = { pending: 'Awaiting confirmation', accepted: 'Confirmed', rejected: 'Rejected' }[booking.status.to_sym]
+      color = { pending: 'warning', accepted: 'primary', rejected: 'secondary' }[booking.status.to_sym]
     else
       label = { pending: 'Request', accepted: 'Confirmed', rejected: 'Rejected' }[booking.status.to_sym]
       color = { pending: 'primary', accepted: 'primary', rejected: 'secondary' }[booking.status.to_sym]

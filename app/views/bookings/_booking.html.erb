@@ -1,1 +1,58 @@
-<%# Booking card for the index %>
+<% if local_assigns[:thumbnail] %>
+  <%= render 'thumbnail', booking: booking %>
+<% else %>
+  <div class="card booking-card mt-4 shadow position-relative">
+    <div class="card-image-top position-relative h-18 overflow-hidden">
+      <%= render 'experiences/photo_gallery', photos: booking.experience.photos %>
+      <div class="position-absolute top-0 start-0 bg-black w-100 h-100 opacity-50 rounded">
+      </div>
+      <div class="booking-card--img-text position-absolute translate-middle top-50 start-50 text-white">
+        <p class="booking-card--date fw-normal"><%= booking.date.strftime('%b %d, %Y') %> · <span class="fw-light"><%= booking.experience.start_time_formatted %> - <%= booking.experience.end_time_formatted %></span></p>
+        <h3 class="text-center m-0"><%= booking.experience.name %></h3>
+        <p class="text-center m-0 opacity-80">Guided by <%= booking.experience.user.first_name %></p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 order-md-2">
+            <p class="fs-5 fw-normal text-end m-0"><%= currency(booking.price) %></p>
+          </div>
+          <div class="col-md-6 order-md-1">
+            <div class="d-flex">
+              <%= render 'avatar', user: booking.experience.user, large: true %>
+              <div class="ms-3">
+                <h5>Your guide, <%= booking.experience.user.first_name %></h5>
+                <small>Guiding near-death experiences since <%= booking.experience.user.created_at.year %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-3 mt-2">
+          <div class="col-md-8 pe-5">
+            <h6>What you'll do:</h6>
+            <p class="ps-3 border-start border-5 m-0">
+              <%= booking.experience.description %>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <small>
+              <p class="m-1"><i class="far fa-calendar-check w-2"></i>
+                <%= booking.date.strftime('%b %d, %Y') %> from <%= booking.experience.start_time_formatted %> to <%= booking.experience.end_time_formatted %>
+              </p>
+              <p class="m-1"><i class="far fa-user w-2"></i>
+                <%= pluralize(booking.participants, 'participants') %>
+              </p>
+              <p class="m-1"><i class="far fa-compass w-2"></i>
+                <% coords = [booking.experience.latitude, booking.experience.longitude].join(',') %><%= link_to 'Get directions', "https://www.google.com/maps/search/?api=1&query=#{coords}", target: :blank %>
+              </p>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="position-absolute top-0 start-0 ms-2 mt-1">
+      <%= booking_status_badge(booking) %>
+    </p>
+  </div>
+<% end %>
