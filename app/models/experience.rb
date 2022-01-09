@@ -13,6 +13,12 @@ class Experience < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   # TODO: The seeds don't have proper addresses
 
+  def duration
+    return nil unless end_time && start_time
+
+    (end_time - start_time) / 1.hour
+  end
+
   def start_time_formatted
     start_time.strftime('%l%p')
   end

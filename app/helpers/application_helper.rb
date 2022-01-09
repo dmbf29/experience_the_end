@@ -16,4 +16,8 @@ module ApplicationHelper
     end
     tag.span(label, class: "me-2 badge bg-#{color}")
   end
+
+  def format_float(num)
+    number_with_precision(num, strip_insignificant_zeros: true)
+  end
 end

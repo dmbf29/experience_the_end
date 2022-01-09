@@ -1,0 +1,18 @@
+<div class="card-white px-3 mb-3">
+  <div class="d-flex align-items-center justify-content-between mt-2 py-4 border-bottom">
+    <div class="guide">
+      <h5>Experience guided by <%= "#{@experience.user.first_name.capitalize} #{@experience.user.last_name.capitalize}" %></h5>
+      <small class="m-0"><%= format_float(@experience.duration) %> hours · Guided in English and Japanese</small>
+    </div>
+    <%= render "avatar", user: @experience.user, large: true %>
+  </div>
+  <div class="py-4 border-bottom">
+    <h5>What You'll Do</h5>
+    <p class="m-0"><%= @experience.description %></p>
+  </div>
+  <div class="py-4">
+    <h5>Notice of Risk</h5>
+    <p class="m-0">You assume all responsibility and risk for the use of the safety resources available. ETE does not assume any liability for the actions, information and opinions provided. ETE disclaims any liability for injury, death or damages resulting from the use thereof.
+    </p>
+  </div>
+</div>
