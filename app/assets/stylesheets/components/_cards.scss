@@ -5,19 +5,19 @@
   display: flex;
   align-items: center;
   position: relative;
+  border-radius: $default-radius;
   img {
     height: 100%;
     width: 140px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: $default-radius;
   }
-  h2 {
-    font-size: 16px;
+  h5 {
     font-weight: bold;
     margin: 0;
   }
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
     opacity: .7;
     margin-bottom: 0;
   }
@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding: $spacer / 2;
+    padding: $spacer;
   }
   .card-experience-link {
     position: absolute;
@@ -39,20 +39,10 @@
 
 .booking-card {
   border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
+  border-radius: $default-radius;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background-color: white;
-}
-
-.datepicker {
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-  background-color: white;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .address-card {

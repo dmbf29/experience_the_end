@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.element.dataset.mapboxApiKey;
 
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/trouni/ckw61fw2j9nl814pa0gqlgbsh",
       zoom: 0,
@@ -32,11 +32,11 @@ export default class extends Controller {
       new mapboxgl.Marker(element)
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
-        .addTo(map);
+        .addTo(this.map);
     });
 
     // Add search input field
-    map.addControl(
+    this.map.addControl(
       new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
@@ -44,11 +44,15 @@ export default class extends Controller {
     );
 
     // Prevent map from loading at 300px height
-    map.on("load", function () {
-      map.resize();
+    this.map.on("load", () => {
+      this.map.resize();
       if (markers.length) {
-        fitMapToMarkers(map, markers);
+        fitMapToMarkers(this.map, markers);
       }
     });
+  }
+
+  disconnect() {
+    this.map.remove();
   }
 }
