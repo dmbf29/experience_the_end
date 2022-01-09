@@ -13,7 +13,9 @@
   <body>
     <%= render 'flashes' %>
     <div class="min-vh-100">
-      <%= render 'navbar', transparent: local_assigns[:transparent_nav], dark: local_assigns[:dark_nav] %>
+      <% unless controller.controller_name == "build" %>
+        <%= render 'navbar', transparent: local_assigns[:transparent_nav], dark: local_assigns[:dark_nav] %>
+      <% end %>
       <%= yield %>
     </div>
   </body>

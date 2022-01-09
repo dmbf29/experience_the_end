@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="d-flex justify-content-between pt-5">
+    <i class="fas fa-skull-crossbones text-primary"></i>
+    <small><text-muted>Save and exit</text-muted></small>
+  </div>
+  <h3 class="mt-5">Submit your<br>
+    experience</h3>
+  <div class="d-flex mt-5">
+    <ul class="nav nav-sm flex-column">
+      <li class="nav-item d-flex justify-content-between">
+        <a class="nav-link" href="#alert">Title and duration</a>
+        <% if @experience.name && @experience.start_time && @experience.end_time %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <a class="nav-link" href="#avatar">What we'll do</a>
+        <% if @experience.description %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <a class="nav-link" href="#banner">How much</a>
+        <% if @experience.price %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <a class="nav-link" href="#button">Where we'll do</a>
+        <% if @experience.address %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <a class="nav-link" href="#card_category">Pictures</a>
+        <% if @experience.photos[0] %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
