@@ -9,10 +9,10 @@
         <small class="text-secondary mb-3">We suggest 2 hours based on your activity. You can always change this later.</small>
         <div class="mt-3 row">
           <div class="col-6">
-            <%= f.input :start_time, as: :time, minute_step: 15 %>
+            <%= f.input :start_time, as: :time, minute_step: 30,  default: Time.parse('13:00') %>
           </div>
           <div class="col-6">
-            <%= f.input :end_time, as: :time, minute_step: 15 %>
+            <%= f.input :end_time, as: :time, minute_step: 30, default: Time.parse('15:00') %>
           </div>
         </div>
       </div>
