@@ -2,7 +2,7 @@ class ExperiencesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @experiences = policy_scope(Experience).where.not(status: 'building')
+    @experiences = policy_scope(Experience).where(status: 'active')
     @markers = @experiences.geocoded.map do |experience|
       {
         lat: experience.latitude,
