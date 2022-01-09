@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-5">
   <h2>Today</h2>
   <% if bookings.today.any? %>
     <p><%= pluralize(bookings.today.size, 'booking') %> today</p>
@@ -7,7 +7,7 @@
     <p>You have no bookings today.</p>
   <% end %>
 </div>
-<div class="mt-4">
+<div class="mt-5">
   <h2>Upcoming bookings</h2>
   <% if bookings.upcoming.any? %>
     <p><%= pluralize(bookings.today.size, 'confirmed booking') %></p>
