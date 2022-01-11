@@ -4,7 +4,7 @@
       <%= render 'sidebar' %>
     </div>
   </div>
-  <div class="col py-3 ps-0" id="main">
+  <div class="col py-3 px-2 px-sm-0" id="main">
     <%= simple_form_for @experience, url: wizard_path, method: :put do |f| %>
       <div class="container">
         <div class="row justify-content-center mt-3">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <%= render 'footer', f: f %>
+      <%= render 'bottom_navbar', f: f %>
     <% end %>
   </div>
 </div>

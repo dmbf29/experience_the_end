@@ -10,3 +10,9 @@
 #sticky-sidebar:hover {
     color:white;
 }
+
+@media (max-width: 576px) {
+    #sticky-sidebar {
+      display: none;
+    }
+  }
