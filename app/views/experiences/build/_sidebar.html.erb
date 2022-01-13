@@ -33,7 +33,7 @@
       </li>
       <li class="nav-item d-flex justify-content-between">
         <%= link_to "Pictures", experience_build_path(@experience, :add_photos), class: "nav-link me-5"%>
-        <% if @experience.photos[0] %>
+        <% if @experience.photos.attached? %>
           <i class="fas fa-check-circle my-auto"></i>
         <% end %>
       </li>
