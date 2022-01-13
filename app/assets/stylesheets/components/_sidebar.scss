@@ -1,0 +1,18 @@
+#sticky-sidebar {
+    background-color: $gray;
+    height: 100vh;
+
+    a, h3, p, small, i {
+        color: white;
+    }
+}
+
+#sticky-sidebar:hover {
+    color:white;
+}
+
+@media (max-width: 576px) {
+    #sticky-sidebar {
+      display: none;
+    }
+  }

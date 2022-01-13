@@ -1,22 +1,31 @@
-<%= simple_form_for @experience, url: wizard_path, method: :put do |f| %>
-  <div class="container">
-    <div class="row justify-content-center mt-3">
-      <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-        <h2 class="mt-2">Let us give your experience a name</h2>
-        <p class="mt-5">Make it descriptive and unique so guests will understand what you are offering.</p>
-        <%= f.input :name, input_html: { rows: 6}, html5: true, required: true, label: false, placeholder: "Warm up in a secret hot bath in Iceland" %>
-        <h2 class="mt-5">How long is your experience?</h2>
-        <small class="text-secondary mb-3">We suggest 2 hours based on your activity. You can always change this later.</small>
-        <div class="mt-3 row">
-          <div class="col-6">
-            <%= f.input :start_time, as: :time, minute_step: 30,  default: Time.parse('13:00') %>
-          </div>
-          <div class="col-6">
-            <%= f.input :end_time, as: :time, minute_step: 30, default: Time.parse('15:00') %>
+<div class="row">
+  <div class="col-3" id="sticky-sidebar">
+    <div class="sticky-top">
+      <%= render 'sidebar' %>
+    </div>
+  </div>
+  <div class="col py-3 ps-sm-0" id="main">
+    <%= simple_form_for @experience, url: wizard_path, method: :put do |f| %>
+      <div class="container">
+        <div class="row justify-content-center mt-3">
+          <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+            <h2 class="mt-2">Let us give your experience a name</h2>
+            <p class="mt-5">Make it descriptive and unique so guests will understand what you are offering.</p>
+            <%= f.input :name, input_html: { rows: 6}, html5: true, required: true, label: false, placeholder: "Warm up in a secret hot bath in Iceland" %>
+            <h2 class="mt-5">How long is your experience?</h2>
+            <small class="text-secondary mb-3">We suggest 2 hours based on your activity. You can always change this later.</small>
+            <div class="mt-3 row">
+              <div class="col-6">
+                <%= f.input :start_time, as: :time, minute_step: 30,  default: Time.parse('13:00') %>
+              </div>
+              <div class="col-6">
+                <%= f.input :end_time, as: :time, minute_step: 30, default: Time.parse('15:00') %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <%= render 'bottom_navbar', f: f %>
+    <% end %>
   </div>
-  <%= render 'footer', f: f %>
-<% end %>
+</div>

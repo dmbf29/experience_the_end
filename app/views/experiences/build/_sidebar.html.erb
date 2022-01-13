@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="d-flex justify-content-between pt-5">
+    <i class="fas fa-skull-crossbones text-primary"></i>
+    <a class="text-muted" href="/experiences"><small><u>Save and exit</u></small></a>
+  </div>
+  <h3 class="mt-5">Submit your<br>
+    experience</h3>
+  <div class="d-flex mt-5">
+    <ul class="nav nav-sm flex-column">
+      <li class="d-flex justify-content-between">
+        <%= link_to "Name and duration", experience_build_path(@experience, :add_name), class: "nav-link me-5"%>
+        <% if @experience.name && @experience.start_time && @experience.end_time %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <%= link_to "What we'll do", experience_build_path(@experience, :add_description), class: "nav-link me-5"%>
+        <% if @experience.description %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <%= link_to "How much", experience_build_path(@experience, :add_price), class: "nav-link me-5"%>
+        <% if @experience.price %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <%= link_to "Where we'll do", experience_build_path(@experience, :add_address), class: "nav-link me-5"%>
+        <% if @experience.address %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex justify-content-between">
+        <%= link_to "Pictures", experience_build_path(@experience, :add_photos), class: "nav-link me-5"%>
+        <% if @experience.photos.attached? %>
+          <i class="fas fa-check-circle my-auto"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
