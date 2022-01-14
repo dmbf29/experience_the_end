@@ -5,6 +5,10 @@ module Owner
           scope.where(user: user )
         end
       end
+     
+      def destroy?
+        record.user == user
+      end
     end
   end
   

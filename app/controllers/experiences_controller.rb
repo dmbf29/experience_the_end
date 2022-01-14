@@ -27,10 +27,6 @@ class ExperiencesController < ApplicationController
     redirect_to new_experience_build_path(@experience)
   end
 
-  def destroy
-    @experience = Experience.find(params[:experience_id])
-    authorize @experience
-    @experience.destroy
-  end
+
 
 end

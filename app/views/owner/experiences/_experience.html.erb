@@ -1,7 +1,10 @@
-<div class="border container p-4 bg-white shadow rounded">
+<div class="border container p-4 bg-white shadow rounded my-3">
   <div class="d-flex justify-content-between">
     <div>
-      <small class="border p-1"><strong>In progress</strong></small>
+      <div class="d-flex flex-row">
+        <span class="border border-right border-warning border-3"></span>
+        <small class="border border-start-0 p-1"><strong>In progress</strong></small>
+      </div>
       <h4 class="mt-3">Experience</h4>
       <p>You will need a few more details before you can submit it.</p>
     </div>
@@ -17,6 +20,6 @@
   <hr>
   <div class="d-flex flex-row">
     <strong><u><%= link_to "Continue", experience_build_path(experience, :add_name) %></u></strong>
-    <strong><u><%= link_to "Delete",  experience_build_path(experience, :add_name), method: :delete, class: "px-2" %></u></strong>
+    <strong><u><%= link_to "Delete",  owner_experience_path(experience), method: :delete, class: "px-2" %></u></strong>
   </div>
 </div>
