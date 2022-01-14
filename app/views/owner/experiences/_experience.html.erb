@@ -1,0 +1,22 @@
+<div class="border container p-4 bg-white shadow rounded">
+  <div class="d-flex justify-content-between">
+    <div>
+      <small class="border p-1"><strong>In progress</strong></small>
+      <h4 class="mt-3">Experience</h4>
+      <p>You will need a few more details before you can submit it.</p>
+    </div>
+    <div class="bg-secondary p-3 rounded w-25">
+    </div>
+  </div>
+  <hr>
+  <div class="d-flex flex-row ">
+    <i class="far fa-paper-plane p-3"></i>
+    <p><strong>Finish submitting your experience</strong><br>
+      Make sure to complete all the sections to submit your experience</p>
+  </div>
+  <hr>
+  <div class="d-flex flex-row">
+    <strong><u><%= link_to "Continue", experience_build_path(experience, :add_name) %></u></strong>
+    <strong><u><%= link_to "Delete",  experience_build_path(experience, :add_name), method: :delete, class: "px-2" %></u></strong>
+  </div>
+</div>

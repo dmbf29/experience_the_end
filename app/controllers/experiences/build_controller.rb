@@ -33,6 +33,7 @@ class Experiences::BuildController < ApplicationController
     experience_path(@experience)
   end
 
+
   private
     def set_progress
       if wizard_steps.any? && wizard_steps.index(step).present?
