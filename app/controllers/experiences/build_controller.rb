@@ -19,7 +19,6 @@ class Experiences::BuildController < ApplicationController
     params[:experience][:status] = 'active' if step == steps.last
     authorize @experience
     @experience.update(experience_params)
-
     render_wizard @experience
   end
 
