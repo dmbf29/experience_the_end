@@ -43,7 +43,6 @@ class Experiences::BuildController < ApplicationController
       end
     end
 
-
     def experience_params
       params.require(:experience).permit(:name, :description, :price, :start_time, :end_time, :address, :status, photos: [])
     end

@@ -26,7 +26,4 @@ class ExperiencesController < ApplicationController
     authorize @experience
     redirect_to new_experience_build_path(@experience)
   end
-
-
-
 end
