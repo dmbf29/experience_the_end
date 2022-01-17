@@ -19,7 +19,7 @@ class Experiences::BuildController < ApplicationController
     params[:experience][:status] = 'active' if step == steps.last
     authorize @experience
     @experience.update(experience_params)
-    
+
     render_wizard @experience
   end
 
@@ -33,17 +33,17 @@ class Experiences::BuildController < ApplicationController
     experience_path(@experience)
   end
 
-
   private
-    def set_progress
-      if wizard_steps.any? && wizard_steps.index(step).present?
-        @progress = ((wizard_steps.index(step) + 1).to_d / wizard_steps.count.to_d) * 100
-      else
-        @progress = 0
-      end
-    end
 
-    def experience_params
-      params.require(:experience).permit(:name, :description, :price, :start_time, :end_time, :address, :status, photos: [])
+  def set_progress
+    if wizard_steps.any? && wizard_steps.index(step).present?
+      @progress = ((wizard_steps.index(step) + 1).to_d / wizard_steps.count.to_d) * 100
+    else
+      @progress = 0
     end
+  end
+
+  def experience_params
+    params.require(:experience).permit(:name, :description, :price, :start_time, :end_time, :address, :status, photos: [])
+  end
 end
