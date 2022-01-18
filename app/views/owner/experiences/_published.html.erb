@@ -1,0 +1,38 @@
+<div class="container px-5">
+  <div class="container px-5">
+    <div class="d-flex justify-content-between align-items-center py-5">
+      <h3>Your published experiences</h3>
+      <%= link_to "Create a new idea", new_experience_path, class: "btn btn-primary" %>
+    </div>
+    <% experiences.each do |experience| %>
+      <%= link_to experience_path(experience) do %>
+        <div class="border container p-4 bg-white shadow rounded my-3">
+          <div class="d-flex justify-content-between">
+            <div>
+              <div class="d-flex flex-row">
+                <span class="border border-right border-success border-3"></span>
+                <small class="border border-start-0 p-1"><strong>Published</strong></small>
+              </div>
+              <h4 class="mt-3"><%= experience.name %></h4>
+              <p> <%= experience.description %></p>
+            </div>
+            <div class="my-experience-card">
+              <%= cl_image_tag experience.photos.first&.key %>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex">
+            <div class="d-flex flex-row align-items-center pe-5">
+              <i class="fas fa-shopping-cart pe-2"></i>
+              <p class="pt-3"><strong>Booked:</strong> <%= experience.bookings.size %> times</p>
+            </div>
+            <div class="d-flex flex-row pe-5 align-items-center">
+              <i class="fas fa-user pe-2"></i>
+              <p class="pt-3"><strong>Last booked:</strong> <%= experience.bookings.last.created_at.strftime('%b %d') %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
