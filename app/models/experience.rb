@@ -13,6 +13,8 @@ class Experience < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   # TODO: The seeds don't have proper addresses
   enum status: { building: 'building', add_name: 'add_name', add_description: 'add_description', add_price: 'add_price', add_address: 'add_address', add_photos: 'add_photos', active: 'active' }
+  scope :in_progress, -> { !active }
+  scope :published, -> { active }
 
   def duration
     return nil unless end_time && start_time

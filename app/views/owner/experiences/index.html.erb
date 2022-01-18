@@ -1,9 +1,30 @@
-<div class="container px-5">
-  <div class="container px-5">
-    <div class="d-flex justify-content-between align-items-center py-5">
-      <h3>Your experiences</h3>
-      <%= link_to "Create a new idea", new_experience_path, class: "btn btn-primary" %>
+<%= content_for :nav do %>
+  <ul class="nav" role="tablist">
+    <li>
+      <button class="btn active" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">
+        Published
+        <% if @experiences.active.any? %>
+          <span class="ms-1 badge rounded-pill bg-dark"><%= @experiences.active.size %></span>
+        <% end %>
+      </button>
+    </li>
+    <li>
+      <button class="btn d-flex align-items-center" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">
+        In progress
+        <% if @experiences.in_progress.any? %>
+          <span class="ms-1 badge rounded-pill bg-dark"><%= @experiences.in_progress.size %></span>
+        <% end %>
+      </button>
+    </li>
+  </ul>
+<% end %>
+<div class="container py-4">
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+      <%= render 'published', experiences: @experiences.active %>
     </div>
-    <%= render @experiences %>
+    <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+      <%= render 'in_progress', experiences: @experiences.in_progress %>
+    </div>
   </div>
 </div>

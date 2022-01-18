@@ -69,3 +69,11 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background-color: white;
 }
+
+.my-experience-card {
+  img {
+    width: 250px;
+    object-fit: cover;
+    border-radius: $default-radius;
+  }
+}
