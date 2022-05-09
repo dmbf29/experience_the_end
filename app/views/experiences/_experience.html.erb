@@ -1,6 +1,10 @@
 <%# Experience card for the index %>
 <div class="card-experience">
-  <%= cl_image_tag experience.photos.first&.key %>
+  <% if experience.photos.attached? %>
+    <%= cl_image_tag experience.photos.first&.key %>
+  <% else %>
+    <%= image_tag 'default_avatar.jpg' %>
+  <% end %>
   <div class="card-experience-infos w-100">
     <div>
       <div class="d-flex justify-content-between align-items-center">
