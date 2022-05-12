@@ -1,27 +1,36 @@
-<div class="banner">
+<%= content_for :nav do %>
+  <%= render 'search_bar' %>
+<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'scream.jpg' %>);">
   <div class="container">
-    <div class="row justify-content-center align-items-center">
-      <div class="col col-sm-10 col-md-6 col-md-4">
+    <h1>Experience the End</h1>
+    <p>Book to push your mortality to the edge.</p>
+    <%= link_to 'Explore', experiences_path, class: 'btn btn-primary'  %>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row mt-5">
+    <div class="col">
+      <h3>Make plans this weekend</h3>
+      <div class="cards">
+        <%= render @experiences.first(2) %>
       </div>
     </div>
   </div>
-  <main>
-    <%= render 'search_bar' %>
-    <div class="skull-info">
-      <h1 class="skull-title">Experience the End</h1>
-      <p class="skull-desc">Book to push your mortality to the edge.</p>
-    </div>
-    <div class="skull">
-      <div class="eyes">
-        <div class="eye"></div>
-        <div class="eye"></div>
+  <div class="row mt-5">
+    <div class="col">
+      <h3>Best sellers</h3>
+      <div class="cards">
+        <%= render @experiences.first(4).last(2) %>
       </div>
-      <div class="nose"></div>
-      <div class="teeth"></div>
     </div>
-    <div class="crossbones">
-      <div class="bone thugs n harmony"></div>
-      <div class="bone see you at the crossroads"></div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <h3>New this Week</h3>
+      <div class="cards">
+        <%= render @experiences.last(2) %>
+      </div>
     </div>
-  </main>
+  </div>
 </div>
