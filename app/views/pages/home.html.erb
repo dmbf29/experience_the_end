@@ -1,14 +1,35 @@
+<%= content_for :nav do %>
+  <%= render 'search_bar' %>
+<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'scream.jpg' %>);">
+  <div class="container">
+    <h1>Experience the End</h1>
+    <p>Book to push your mortality to the edge.</p>
+    <%= link_to 'Explore', experiences_path, class: 'btn btn-primary'  %>
+  </div>
+</div>
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col col-sm-8 col-md-6">
-      <%= render 'search_bar' %>
+  <div class="row mt-5">
+    <div class="col">
+      <h3>Make plans this weekend</h3>
+      <div class="cards">
+        <%= render @experiences.first(2) %>
+      </div>
     </div>
   </div>
   <div class="row mt-5">
     <div class="col">
-      <h2>Make plans this weekend</h2>
+      <h3>Best sellers</h3>
       <div class="cards">
-        <%= render @experiences %>
+        <%= render @experiences.first(4).last(2) %>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <h3>New this Week</h3>
+      <div class="cards">
+        <%= render @experiences.last(2) %>
       </div>
     </div>
   </div>
