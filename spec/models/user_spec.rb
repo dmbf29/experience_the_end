@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'when invalid' do
-      context 'without email and password' do
+      context 'without proper attributes' do
         it 'generates an invalid user' do
           user = build(:user, email: nil, password: nil)
           expect(user.valid?).to eq(false)
@@ -20,7 +20,10 @@ RSpec.describe User, type: :model do
         it 'generates an error message' do
           user = build(:user, email: nil, password: nil)
           user.valid?
-          expect(user.errors.messages).to eq({ email: ["can't be blank"], password: ["can't be blank"] })
+          expect(user.errors.messages).to eq({
+              email: ["can't be blank"],
+              password: ["can't be blank"]
+            })
         end
       end
     end

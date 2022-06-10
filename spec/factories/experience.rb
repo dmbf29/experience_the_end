@@ -9,5 +9,6 @@ FactoryBot.define do
     start_time { Time.parse('9:00am') }
     end_time { Time.parse('11:00am') }
     status { 'active' }
+    user
   end
 end
