@@ -31,8 +31,8 @@ RSpec.describe User, type: :model do
 
   describe '#owner?' do
     it 'returns true if a user has created one experience' do
-    user = create(:user, email: 'testuser1@example.com')
-    user.experiences.create(attributes_for(:experience))
+      user = create(:user, email: 'testuser1@example.com')
+      user.experiences.create(attributes_for(:experience))
       expect(user.owner?).to eq(true)
     end
 

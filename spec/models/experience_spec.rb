@@ -10,7 +10,7 @@ RSpec.describe Experience, type: :model do
     end
 
     context 'when invalid' do
-      context 'without email and password' do
+      context 'while being active' do
         it 'generates an invalid experience' do
           experience = build(:experience,
             status: 'active',
@@ -48,23 +48,20 @@ RSpec.describe Experience, type: :model do
     end
   end
 
-  # describe '#owner?' do
-  #   it 'returns true if a experience has created one experience' do
-  #   experience = create(:experience, email: 'testexperience1@example.com')
-  #   experience.experiences.create(attributes_for(:experience))
-  #     expect(experience.owner?).to eq(true)
-  #   end
+  describe '#duration' do
+    it 'returns nil duration if an experience doesn\'t have a start_time' do
+      experience = create(:experience, status: "building", start_time: nil, end_time: Time.parse('11:00am'))
+      expect(experience.duration).to eq(nil)
+    end
 
-  #   it 'returns true if a experience has created more than one experience' do
-  #     experience = create(:experience, email: 'testexperience2@example.com')
-  #     experience.experiences.create(attributes_for(:experience, name: 'Ueno walk'))
-  #     experience.experiences.create(attributes_for(:experience, name: 'Shinjuku walk'))
-  #     expect(experience.owner?).to eq(true)
-  #   end
+    it 'returns nil duration if an experience doesn\'t have an end_time' do
+      experience = create(:experience, status: "building", start_time: Time.parse('9:00am'), end_time: nil)
+      expect(experience.duration).to eq(nil)
+    end
 
-  #   it 'returns false if a experience has not created any experiences' do
-  #     experience = create(:experience, email: 'testexperience3@example.com')
-  #     expect(experience.owner?).to eq(false)
-  #   end
-  # end
+    it 'returns a float duration for valid times on an experience' do
+      experience = create(:experience, start_time: Time.parse('9:00am'), end_time: Time.parse('11:00am'))
+      expect(experience.duration).to eq(2.0)
+    end
+  end
 end
