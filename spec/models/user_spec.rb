@@ -26,9 +26,20 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # describe '#truncated_details' do
-  #   it 'returns truncated details' do
-  #     expect(user.truncated_details).to eq('Once upon a...')
-  #   end
-  # end
+  describe '#owner?' do
+    it 'returns true if a user has created one experience' do
+      user = create(:user)
+      expect(user.owner?).to eq(true)
+    end
+
+    it 'returns true if a user has created more than one experience' do
+      user = create(:user)
+      expect(user.owner?).to eq(true)
+    end
+
+    it 'returns false if a user has not created any experiences' do
+      user = create(:user)
+      expect(user.owner?).to eq(false)
+    end
+  end
 end
