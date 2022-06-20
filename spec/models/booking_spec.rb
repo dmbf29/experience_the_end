@@ -38,20 +38,20 @@ RSpec.describe Booking, type: :model do
     end
   end
 
-  # describe '#duration' do
-  #   it 'returns nil duration if an experience doesn\'t have a start_time' do
-  #     experience = create(:experience, status: "building", start_time: nil, end_time: Time.parse('11:00am'))
-  #     expect(experience.duration).to eq(nil)
-  #   end
+  describe '#price' do
+    it 'returns an Integer ' do
+      booking = create(:booking, participants: 2)
+      expect(booking.price).to be_an(Integer)
+    end
 
-  #   it 'returns nil duration if an experience doesn\'t have an end_time' do
-  #     experience = create(:experience, status: "building", start_time: Time.parse('9:00am'), end_time: nil)
-  #     expect(experience.duration).to eq(nil)
-  #   end
+    it 'returns the experience price for 1 participant' do
+      booking = create(:booking, participants: 1)
+      expect(booking.price).to eq(500)
+    end
 
-  #   it 'returns a float duration for valid times on an experience' do
-  #     experience = create(:experience, start_time: Time.parse('9:00am'), end_time: Time.parse('11:00am'))
-  #     expect(experience.duration).to eq(2.0)
-  #   end
-  # end
+    it 'returns the total experience price for 2 participant' do
+      booking = create(:booking, participants: 2)
+      expect(booking.price).to eq(1000)
+    end
+  end
 end
