@@ -4,46 +4,36 @@ RSpec.describe Booking, type: :model do
   describe '#initialize' do
     context 'when valid' do
       it 'generates a valid experience with all columns' do
-        experience = build(:booking)
-        expect(experience.valid?).to eq(true)
+        booking = build(:booking)
+        expect(booking.valid?).to eq(true)
       end
     end
 
     context 'when invalid' do
-      context 'while being active' do
-        it 'generates an invalid experience' do
-          experience = build(:experience,
-            status: 'active',
-            name: nil,
-            start_time: nil,
-            end_time: nil,
-            price: nil,
-            description: nil,
-            address: nil
-          )
-          expect(experience.valid?).to eq(false)
-        end
+      it 'generates an invalid booking' do
+        booking = build(:booking,
+          participants: nil,
+          date: nil,
+          user: nil,
+          experience: nil
+        )
+        expect(booking.valid?).to eq(false)
+      end
 
-        it 'generates an error message' do
-          experience = build(:experience,
-            status: 'active',
-            name: nil,
-            start_time: nil,
-            end_time: nil,
-            price: nil,
-            description: nil,
-            address: nil
-          )
-          experience.valid?
-          expect(experience.errors.messages).to eq({
-            name: ["can't be blank"],
-            start_time: ["can't be blank"],
-            end_time: ["can't be blank"],
-            price: ["can't be blank"],
-            description: ["can't be blank"],
-            address: ["can't be blank"]
-          })
-        end
+      it 'generates an error message' do
+        booking = build(:booking,
+          participants: nil,
+          date: nil,
+          user: nil,
+          experience: nil
+        )
+        booking.valid?
+        expect(booking.errors.messages).to eq({
+          participants: ["is not a number"],
+          date: ["can't be blank"],
+          experience: ["must exist"],
+          user: ["must exist"]
+        })
       end
     end
   end
