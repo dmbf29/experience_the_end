@@ -40,17 +40,17 @@ RSpec.describe Booking, type: :model do
 
   describe '#price' do
     it 'returns an Integer ' do
-      booking = create(:booking, participants: 2)
+      booking = build(:booking, participants: 2)
       expect(booking.price).to be_an(Integer)
     end
 
     it 'returns the experience price for 1 participant' do
-      booking = create(:booking, participants: 1)
+      booking = build(:booking, participants: 1)
       expect(booking.price).to eq(500)
     end
 
     it 'returns the total experience price for 2 participant' do
-      booking = create(:booking, participants: 2)
+      booking = build(:booking, participants: 2)
       expect(booking.price).to eq(1000)
     end
   end
